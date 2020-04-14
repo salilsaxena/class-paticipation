@@ -202,11 +202,11 @@ node* ret_node()//helper function
 }
 void insert_col(ll_carrier* H,ll_carrier* node_inp,int ele)
 {
-  node_inp->length = node_inp->length+1;
   ll_carrier* crt = H;
   node* tmp = NULL;
   while(crt)
   {
+    crt->length = crt->length+1;
     tmp = ret_node();
     tmp->D = NULL;
     if(crt == node_inp)
@@ -349,7 +349,6 @@ void init_end(ll_carrier** list_h,ll_carrier** list_t) //it will add a node's h&
     tmp->prev = *list_t;
     (*list_t)->next = tmp;
     *list_t = tmp;
-    printf("\n\"%d\"\n",(*list_h)->length);
     for(int i = 0;i<(*list_h)->length;i++)
     {
       insert_end(*list_h,tmp,0);
