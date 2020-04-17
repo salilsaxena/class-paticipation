@@ -1,8 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-//the ll_carrier will have a head and tail(so ll_carrier = doubly linked list)
-//node is also a doubly linksed list
-//node's h&t will be inside ll_carrier
 
 typedef struct node
 {
@@ -30,7 +27,7 @@ int no_column(ll_carrier* H)
   }
   return c;
 }
-int total_cells(ll_carrier* H) // this is for non homogenous excel(lists)
+int total_cells(ll_carrier* H) 
 {
   int c = H->length;
   c = c*no_column(H);
@@ -61,7 +58,7 @@ int max_length(ll_carrier* H)
 //Search functions start here
 
 /*
- *  I didnt see the usage of `search`
+ *  I didnt see the usage of `search_y`
  */
 
 //int search_y(ll_carrier* node_inp,int ele)
@@ -200,7 +197,9 @@ node* ret_node()//helper function
   node* tmp = (node*)malloc(sizeof(node));
   return tmp;
 }
-void insert_col(ll_carrier* H,ll_carrier* node_inp,int ele)
+void insert_col(ll_carrier* H,ll_carrier* node_inp,int ele) 
+  // only to use it when all the columns ar ebalanced
+  // do not use it after init_* it is not designed for NUll nodes
 {
   ll_carrier* crt = H;
   node* tmp = NULL;
@@ -356,6 +355,76 @@ void init_end(ll_carrier** list_h,ll_carrier** list_t) //it will add a node's h&
   }
 }
 //insertions in ll_carrier ends here.
+
+void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the whole column //perform error handling later
+{
+  ll_carrier* temp = node_inp;
+  node* trav = node_inp->head;
+  node *tmp;
+  if(node_inp == *H && node_inp == *T)
+  {
+    //only a singe column is present
+    //for now must not delete the whole column as the whole list sheet will becoe empty and have to run init_* again
+    while(trav->D)
+    {
+      tmp = trav; 
+      trav = trav->D;
+      free(tmp);
+    }
+    (*H)->head = trav;
+    trav->val = 0;//will leave 0 in the last cell 
+  }
+  else if(node_inp ==  *H || node_inp == *T)
+  {
+    if(node_inp ==*H)
+    {
+      *H = node_inp->next;
+      node_inp->next->prev = NULL;
+      while(trav)
+      {
+        tmp = trav;
+        trav->R->L = NULL;
+        trav = trav->D;
+        free(tmp);
+      }
+      free(temp);
+    }
+    else
+    {
+      *T = node_inp->prev;
+      node_inp->next = NULL;
+      while(trav)
+      {
+        tmp = trav;
+        trav->L->R = NULL;
+        trav = trav->D;
+        free(tmp);
+      } 
+      free(temp);
+    }
+  }
+  
+  else
+  {
+    node_inp->prev->next = node_inp->next; //error starts from here
+    node_inp->next->prev = node_inp->prev;
+    while(trav)
+    {
+      trav->L->R = trav->R;
+      trav->R->L = trav->L;
+      trav = trav->D;
+    }
+    //have insterleaved the pointers
+    //now will free the pointers
+    while(trav)
+    {
+      tmp = trav;
+      trav = trav->D;
+      free(tmp);
+    }
+    free(node_inp);
+  }
+}
 
 //printing method starts here
 void print_node(ll_carrier* node_inp) // to print a list(node) carried inside ll_carrier.
