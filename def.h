@@ -1,8 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-//the ll_carrier will have a head and tail(so ll_carrier = doubly linked list)
-//node is also a doubly linksed list
-//node's h&t will be inside ll_carrier
 
 typedef struct node
 {
@@ -30,7 +27,7 @@ int no_column(ll_carrier* H)
   }
   return c;
 }
-int total_cells(ll_carrier* H) // this is for non homogenous excel(lists)
+int total_cells(ll_carrier* H) 
 {
   int c = H->length;
   c = c*no_column(H);
@@ -61,7 +58,7 @@ int max_length(ll_carrier* H)
 //Search functions start here
 
 /*
- *  I didnt see the usage of `search`
+ *  I didnt see the usage of `search_y`
  */
 
 //int search_y(ll_carrier* node_inp,int ele)
@@ -200,7 +197,9 @@ node* ret_node()//helper function
   node* tmp = (node*)malloc(sizeof(node));
   return tmp;
 }
-void insert_col(ll_carrier* H,ll_carrier* node_inp,int ele)
+void insert_col(ll_carrier* H,ll_carrier* node_inp,int ele) 
+  // only to use it when all the columns ar ebalanced
+  // do not use it after init_* it is not designed for NUll nodes
 {
   ll_carrier* crt = H;
   node* tmp = NULL;
@@ -356,6 +355,32 @@ void init_end(ll_carrier** list_h,ll_carrier** list_t) //it will add a node's h&
   }
 }
 //insertions in ll_carrier ends here.
+
+void del_col(ll_carrier* node_inp) //to delete the whole column
+  //perform error handling later
+{
+    ll_carrier* temp = node_inp;
+    node* trav = node_inp->head;
+    node_inp->prev->next = node_inp->next;
+    node_inp->next->prev = node_inp->prev;
+    while(trav)
+    {
+      trav->L->R = trav->R;
+      trav->R->L = trav->L;
+      trav = trav->D;
+    }
+    //have insterleaved the pointers
+    //now will free the pointers
+    trav = node_inp->head;
+    node* tmp;
+    while(trav)
+    {
+      tmp = trav;
+      trav = trav->D;
+      free(tmp);
+    }
+    free(node_inp);
+}
 
 //printing method starts here
 void print_node(ll_carrier* node_inp) // to print a list(node) carried inside ll_carrier.
