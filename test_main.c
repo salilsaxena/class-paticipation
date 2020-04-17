@@ -18,7 +18,8 @@ void main()
   change_ele(1,2,H,14);
   change_ele(3,9,H,15);
   print_block(H);
-  del_col(H->next);//doesnt work with ends of ll_carrier
-  print_block(H);
+  del_col(H,T,H);//doesnt work with ends of ll_carrier
+  print_node(H->next->next);
+  print_block(H->next);
 }
 

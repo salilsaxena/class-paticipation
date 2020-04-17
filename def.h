@@ -356,12 +356,46 @@ void init_end(ll_carrier** list_h,ll_carrier** list_t) //it will add a node's h&
 }
 //insertions in ll_carrier ends here.
 
-void del_col(ll_carrier* node_inp) //to delete the whole column
-  //perform error handling later
+void del_col(ll_carrier* H,ll_carrier* T,ll_carrier* node_inp) //to delete the whole column //perform error handling later
 {
-    ll_carrier* temp = node_inp;
-    node* trav = node_inp->head;
-    node_inp->prev->next = node_inp->next;
+  ll_carrier* temp = node_inp;
+  node* trav = node_inp->head;
+  if(node_inp == H && node_inp == T)
+  {
+    //only a singe column is present
+    //for now must not delete the whole column as the whole list sheet will becoe empty and have to run init_* again
+    node* trav = node_inp->head,*tmp; 
+    while(trav->D)
+    {
+      tmp = trav; 
+      trav = trav->D;
+      free(tmp);
+    }
+    trav->val = 0;//will leave 0 in the last cell 
+  }
+  else if(node_inp ==  H || node_inp == T)
+  {
+    if(node_inp ==H)
+    {
+      H = H->next;
+      node_inp->next->prev = NULL;
+      node *trav  = node_inp->head, *tmp;
+      while(trav)
+      {
+        tmp = trav;
+        trav->R->L = NULL;
+        trav = trav->D;
+        free(tmp);
+      }
+      free(temp);
+    }
+    else
+      printf("not done yet\n");
+  }
+  
+  else
+  {
+    node_inp->prev->next = node_inp->next; //error starts from here
     node_inp->next->prev = node_inp->prev;
     while(trav)
     {
@@ -380,6 +414,7 @@ void del_col(ll_carrier* node_inp) //to delete the whole column
       free(tmp);
     }
     free(node_inp);
+  }
 }
 
 //printing method starts here
