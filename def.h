@@ -356,30 +356,30 @@ void init_end(ll_carrier** list_h,ll_carrier** list_t) //it will add a node's h&
 }
 //insertions in ll_carrier ends here.
 
-void del_col(ll_carrier* H,ll_carrier* T,ll_carrier* node_inp) //to delete the whole column //perform error handling later
+void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the whole column //perform error handling later
 {
   ll_carrier* temp = node_inp;
   node* trav = node_inp->head;
-  if(node_inp == H && node_inp == T)
+  node *tmp;
+  if(node_inp == *H && node_inp == *T)
   {
     //only a singe column is present
     //for now must not delete the whole column as the whole list sheet will becoe empty and have to run init_* again
-    node* trav = node_inp->head,*tmp; 
     while(trav->D)
     {
       tmp = trav; 
       trav = trav->D;
       free(tmp);
     }
+    (*H)->head = trav;
     trav->val = 0;//will leave 0 in the last cell 
   }
-  else if(node_inp ==  H || node_inp == T)
+  else if(node_inp ==  *H || node_inp == *T)
   {
-    if(node_inp ==H)
+    if(node_inp ==*H)
     {
-      H = H->next;
+      *H = node_inp->next;
       node_inp->next->prev = NULL;
-      node *trav  = node_inp->head, *tmp;
       while(trav)
       {
         tmp = trav;
@@ -390,7 +390,18 @@ void del_col(ll_carrier* H,ll_carrier* T,ll_carrier* node_inp) //to delete the w
       free(temp);
     }
     else
-      printf("not done yet\n");
+    {
+      *T = node_inp->prev;
+      node_inp->next = NULL;
+      while(trav)
+      {
+        tmp = trav;
+        trav->L->R = NULL;
+        trav = trav->D;
+        free(tmp);
+      } 
+      free(temp);
+    }
   }
   
   else
@@ -405,8 +416,6 @@ void del_col(ll_carrier* H,ll_carrier* T,ll_carrier* node_inp) //to delete the w
     }
     //have insterleaved the pointers
     //now will free the pointers
-    trav = node_inp->head;
-    node* tmp;
     while(trav)
     {
       tmp = trav;
