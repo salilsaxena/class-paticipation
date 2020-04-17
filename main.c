@@ -9,6 +9,7 @@ void main() // this is a menu driven program but will subject to change
   int key;//for search key;
   int ele;//element you want to insert
   ll_carrier *H,*T;
+  H = T = NULL;
   init_end(&H,&T);
   insert_end(H,H,0);//BY default the sheet will contain only one cell with default value of 0
                     //This will definately change.
