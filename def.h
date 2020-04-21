@@ -209,6 +209,11 @@ void insert_col(ll_carrier* H,ll_carrier* node_inp,int ele)
 void print_block(ll_carrier*);
 void insert_pos(int x,int y,ll_carrier* H,int ele)
 {
+  if(x < 0 || y < 0)
+  {
+    printf("Invalid\n");
+    return ;
+  }
   if(x > no_column(H) || y > H->length)
   {
       printf("Out of range\n");
