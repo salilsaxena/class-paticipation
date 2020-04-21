@@ -2,7 +2,8 @@
 #include<stdlib.h>
 #include"def.h"
 void menu();
-void main() // this is a menu driven program but will subject to change
+//newly added function: insert_pos del_col del_cell 
+void main() 
 {
   int choice;
   int x,y;//for coordinate;
