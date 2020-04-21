@@ -35,11 +35,13 @@ void main() // this is a menu driven program but will subject to change
         change_ele(x,y,H,ele);
         break;
       case 4:
-        printf("The column you want: ");
+        printf("The x co-ordinate you want: ");
         scanf("%d",&x);
+        printf("The y co-ordinate you want: ");
+        scanf("%d",&y);
         printf("Enter the elemt you want to insert: ");
         scanf("%d",&ele);
-        insert_col(H,ret_col(H,x),ele);
+        insert_pos(x,y,H,ele);
         break;
       case 5: 
         printf("Lenght of each column: %d\n",H->length);
