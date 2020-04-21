@@ -206,19 +206,22 @@ void insert_col(ll_carrier* H,ll_carrier* node_inp,int ele)
     crt = crt->next;
   }
 }
-void print_block(ll_carrier*);
+int pos_checker(int x,int y,ll_carrier* H)
+{
+  if(x > no_column(H) || y > H->length)
+    return 0;
+  else if(x < 0 || y < 0)
+    return 0;
+  else 
+    return 1;
+}
 void insert_pos(int x,int y,ll_carrier* H,int ele)
 {
-  if(x < 0 || y < 0)
+  if(!pos_checker(x,y,H))
   {
-    printf("Invalid\n");
+    printf("Wrong position\n");
     return ;
-  }
-  if(x > no_column(H) || y > H->length)
-  {
-      printf("Out of range\n");
-      return ;
-  }
+  } 
   insert_col(H,H,0);//all of the rows will have an extra node now, just need to shift the value.
   int temp,t;
   node* tmp = H->head;
@@ -240,13 +243,6 @@ void insert_pos(int x,int y,ll_carrier* H,int ele)
     tmp = tmp->D;
   }
 }
-
-/*
-  Have to define a seprate function for insertion in columns
-*/
-
-
-
 //to insert LR in insert_end
 void insert_end(ll_carrier* H,ll_carrier *node_inp,int ele) // to insert ele at the end of ll_carrier's list(node)
 {
@@ -433,7 +429,26 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
     free(node_inp);
   }
 }
-
+void del_cell_pos(int x,int y,ll_carrier* H)
+{
+  if(!pos_checker(x,y,H))
+  {
+    printf("Wrong inputs\n");
+    return;
+  }
+  ll_carrier* col = ret_col(H,x);
+  node* crt = col->head;
+  for(int i=0;i<y-1;i++)
+  {
+    crt = crt->D;
+  } 
+  while(crt->D)
+  {
+    crt->val = crt->D->val;
+    crt = crt->D;
+  }
+  col->tail->val = 0;
+}
 //printing method starts here
 void print_node(ll_carrier* node_inp) // to print a list(node) carried inside ll_carrier.
 {

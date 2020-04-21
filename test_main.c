@@ -27,5 +27,7 @@ void main()
   //print_block(H);
   insert_pos(2,5,H,44);
   print_block(H);
+  del_cell_pos(2,5,H);
+  print_block(H);
 }
 
