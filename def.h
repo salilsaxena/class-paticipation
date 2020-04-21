@@ -56,31 +56,6 @@ int max_length(ll_carrier* H)
 }
 
 //Search functions start here
-
-/*
- *  I didnt see the usage of `search_y`
- */
-
-//int search_y(ll_carrier* node_inp,int ele)
-//{
-//  if(!node_inp)
-//  {
-//    printf("Empty Node!\nShouldn't have happened!");
-//    exit(0);
-//  }
-//  int f = 0;
-//  node *crt = node_inp->head;
-//  while(crt)
-//  {
-//    if(crt->val == ele)
-//    {
-//        f = 1;
-//        return 1;
-//    }
-//    crt = crt->D;
-//  }
-//  return 0;
-//}
 int search_All(ll_carrier* H,int ele)
 //complexity would be n**2
 // any suggestions for lowering it. PLS note we cant sort the LLs
@@ -231,7 +206,34 @@ void insert_col(ll_carrier* H,ll_carrier* node_inp,int ele)
     crt = crt->next;
   }
 }
-
+void insert_pos(int x,int y,ll_carrier* H,int ele)
+{
+  y--;
+  if(x > no_column(H) || y > H->length)
+  {
+      printf("Out of range\n");
+      return ;
+  }
+  insert_col(H,H,0);//all of the rows will have an extra node now, just need to shift the value.
+  int temp = 0;
+  node* tmp = H->head;
+  ll_carrier* crt = H;
+  crt = ret_col(H,x);
+  tmp = crt->head;
+  for(int j = 0; j<y;j++)
+  {
+    tmp = tmp->D;
+  }
+  temp = tmp->val;
+  tmp->val = ele;
+  tmp = tmp->D;
+  while(tmp->D)
+  {
+    tmp->val = temp;
+    temp = tmp->D->val; 
+    tmp = tmp->D;
+  }
+}
 
 /*
   Have to define a seprate function for insertion in columns
