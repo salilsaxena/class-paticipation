@@ -19,11 +19,13 @@ void main()
   change_ele(1,2,H,14);
   change_ele(3,9,H,15);
   print_block(H);
-  del_col(&H,&T,T);//doesnt work with ends of ll_carrier
-  //print_node(H->next->next);
-  //print_block(H->next);
+  insert_col(H,H->next,23);
   print_block(H);
-  insert_pos(2,1,H,44);
+  //del_col(&H,&T,T);//doesnt work with ends of ll_carrier
+  ////print_node(H->next->next);
+  ////print_block(H->next);
+  //print_block(H);
+  insert_pos(2,5,H,44);
   print_block(H);
 }
 

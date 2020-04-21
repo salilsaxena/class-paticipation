@@ -206,31 +206,35 @@ void insert_col(ll_carrier* H,ll_carrier* node_inp,int ele)
     crt = crt->next;
   }
 }
+void print_block(ll_carrier*);
 void insert_pos(int x,int y,ll_carrier* H,int ele)
 {
-  y--;
   if(x > no_column(H) || y > H->length)
   {
       printf("Out of range\n");
       return ;
   }
   insert_col(H,H,0);//all of the rows will have an extra node now, just need to shift the value.
-  int temp = 0;
+  printf("\" \"\n");
+  print_block(H);
+  printf("\" \"\n");
+  int temp,t;
   node* tmp = H->head;
   ll_carrier* crt = H;
   crt = ret_col(H,x);
   tmp = crt->head;
-  for(int j = 0; j<y;j++)
+  for(int j = 0; j<y-1;j++)
   {
     tmp = tmp->D;
   }
   temp = tmp->val;
   tmp->val = ele;
   tmp = tmp->D;
-  while(tmp->D)
+  while(tmp)
   {
+    t = tmp->val;
     tmp->val = temp;
-    temp = tmp->D->val; 
+    temp = t; 
     tmp = tmp->D;
   }
 }
