@@ -1,3 +1,5 @@
 A menu driven program would be nice but try mergeing the similar functions in a same menu, and make a go back menu for seprate menus 
 
 Make a function to insert node at a position give by user.
+
+making a new function which will accept position and will shit each element up by one position.
