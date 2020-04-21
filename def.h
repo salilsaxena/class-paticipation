@@ -220,9 +220,6 @@ void insert_pos(int x,int y,ll_carrier* H,int ele)
       return ;
   }
   insert_col(H,H,0);//all of the rows will have an extra node now, just need to shift the value.
-  printf("\" \"\n");
-  print_block(H);
-  printf("\" \"\n");
   int temp,t;
   node* tmp = H->head;
   ll_carrier* crt = H;
