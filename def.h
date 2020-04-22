@@ -179,7 +179,7 @@ void pos(ll_carrier * H,int ele,int flag_all) //we will directly change the valu
     r = 0;
     right_trav = right_trav->next;
   }
-  printf("\n");
+  printf("]\n");
 }
 //index finding algoright ends now
 ll_carrier* ret_col(ll_carrier* H,int column_no) //it wil return the ll_carrier from the given int 
@@ -195,10 +195,11 @@ ll_carrier* ret_col(ll_carrier* H,int column_no) //it wil return the ll_carrier 
 node* ret_node()//helper function 
 {
   node* tmp = (node*)malloc(sizeof(node));
+  tmp->R = tmp->L = tmp->D = tmp->U = NULL;
   return tmp;
 }
 void insert_col(ll_carrier* H,ll_carrier* node_inp,int ele) 
-  // only to use it when all the columns ar ebalanced
+  // only to use it when all the columns are balanced
   // do not use it after init_* it is not designed for NUll nodes
 {
   ll_carrier* crt = H;
@@ -379,7 +380,7 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
     if(node_inp ==*H)
     {
       *H = node_inp->next;
-      node_inp->next->prev = NULL;
+      //node_inp->next->prev = NULL;
       while(trav)
       {
         tmp = trav;
@@ -388,6 +389,7 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
         free(tmp);
       }
       free(temp);
+      (*H)->prev = NULL;
     }
     else
     {
@@ -401,6 +403,7 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
         free(tmp);
       } 
       free(temp);
+      (*T)->next = NULL;
     }
   }
   
