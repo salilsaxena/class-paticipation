@@ -33,4 +33,5 @@ void main()
   print_block(H);
   del_cell_pos(2,5,H);
   print_block(H);
+  pos(H,15,1);
 }

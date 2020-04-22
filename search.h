@@ -67,5 +67,5 @@ void pos(ll_carrier * H,int ele,int flag_all) //we will directly change the valu
     r = 0;
     right_trav = right_trav->next;
   }
-  printf("\n");
+  printf("]\n");
 }
