@@ -25,7 +25,7 @@ void main()
   print_block(H);
   insert_col(H,H->next,23);
   print_block(H);
-  del_col(&H,&T,T);//doesnt work with ends of ll_carrier
+  del_col(&H,&T,H);//doesnt work with ends of ll_carrier
   ////print_node(H->next->next);
   ////print_block(H->next);
   //print_block(H);
@@ -33,5 +33,4 @@ void main()
   print_block(H);
   del_cell_pos(2,5,H);
   print_block(H);
-  pos(H,1,1);
 }

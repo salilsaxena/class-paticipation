@@ -231,7 +231,6 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
     if(node_inp ==*H)
     {
       *H = node_inp->next;
-      node_inp->next->prev = NULL;
       while(trav)
       {
         tmp = trav;
@@ -240,11 +239,11 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
         free(tmp);
       }
       free(temp);
+      (*H)->prev = NULL;
     }
     else
     {
       *T = node_inp->prev;
-      node_inp->next = NULL;
       while(trav)
       {
         tmp = trav;
@@ -253,6 +252,7 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
         free(tmp);
       }
       free(temp);
+      (*T)->next = NULL;
     }
   }
 

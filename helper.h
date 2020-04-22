@@ -52,6 +52,7 @@ ll_carrier* ret_col(ll_carrier* H,int column_no) //it wil return the ll_carrier 
 node* ret_node()//helper function 
 {
   node* tmp = (node*)malloc(sizeof(node));
+  tmp->R = tmp->L = tmp->U = tmp->D = NULL;
   return tmp;
 }
 int pos_checker(int x,int y,ll_carrier* H)
