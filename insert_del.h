@@ -2,32 +2,21 @@
 #include<stdlib.h>
 void change_ele(int x,int y,ll_carrier* H,int ele)
 {
+  if(!pos_checker(x,y,H))
+  {
+    printf("Out of Range!\n");
+    return ;
+  }
   node* crt = H->head;
   for(int i = 1;i<x;i++)
   {
-    if(crt->R)
-    {
-      crt = crt->R;
-    }
-    else
-    {
-      printf("Index out of range\n");
-      return ;
-    }
+    crt = crt->R;
   }
- for(int j = 1;j<y;j++)
- {
-    if(crt->D)
-    {
-      crt = crt->D;
-    }
-    else
-    {
-      printf("Index out of range\n");
-      return ;
-    }
- }
- crt->val = ele;
+  for(int j = 1;j<y;j++)
+  {
+    crt = crt->D;
+  }
+  crt->val = ele;
 }
 void insert_col(ll_carrier* H,ll_carrier* node_inp,int ele)
   // only to use it when all the columns ar ebalanced
@@ -67,7 +56,7 @@ void insert_pos(int x,int y,ll_carrier* H,int ele)
 {
   if(!pos_checker(x,y,H))
   {
-    printf("Wrong position\n");
+    printf("Out of Range!\n");
     return ;
   }
   insert_col(H,H,0);//all of the rows will have an extra node now, just need to shift the value.
@@ -210,6 +199,11 @@ void init_end(ll_carrier** list_h,ll_carrier** list_t) //it will add a node's h&
 
 void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the whole column //perform error handling later
 {
+  if(!node_inp)
+  {
+    //printf("Wrong input\n");
+    return ;
+  }
   ll_carrier* temp = node_inp;
   node* trav = node_inp->head;
   node *tmp;
@@ -281,7 +275,7 @@ void del_cell_pos(int x,int y,ll_carrier* H)
 {
   if(!pos_checker(x,y,H))
   {
-    printf("Wrong inputs\n");
+    printf("Out of Range!\n");
     return;
   }
   ll_carrier* col = ret_col(H,x);
