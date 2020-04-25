@@ -1,47 +1,29 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include"def.h"
-void menu();
-//newly added function: insert_pos del_col del_cell 
-/*
- *  .h files and and their functions:
- *  helper:
- *    length related fucntions.
- *  search :
- *    pos(H,ele,flag_all);
- *  insert_del: 
- *    change_ele(x,y,H,ele)
- *    insert_col(H,x,ele) 
- *    insert_pos(x,y,H,ele);
- *    insert_end(H,node_inp,ele) will only be used in init_end and init_front
- *    init_end(&H,&T);
- *    init_front(&H,&T);
- *  print:
- *    print_block(H)
- *    print_node(node_inp) not sure to insert it or not
- *
- *
- */
-
-ll_carrier *H=NULL,*T=NULL;
-init_end(&H,&T);
-insert_end(H,H,0);
-
+#include "def.h"
+#include "search.h"
+#include "helper.h"
+#include "insert_del.h"
+#include "print.h"
+ll_carrier *T,*H;
 void search()
 {
   int ele,choice;
   printf("\nChoice: \n0.Back\n1.search first position of an element\n2.Search the whole block for an element\n:");
   scanf("%d",&choice);
-  printf("Enter the element you want to search: ");
-  scanf("%d",&ele);
   switch(choice)
   {
     case 0:
+      printf("\n");
       break;
-    case 1: 
+    case 1:
+      printf("Enter the element you want to search: ");
+      scanf("%d",&ele);
       pos(H,ele,0);
       break;
     case 2:
+      printf("Enter the element you want to search: ");
+      scanf("%d",&ele);
       pos(H,ele,1);
       break;
     default:
@@ -56,18 +38,39 @@ void print()
   switch(choice)
   {
     case 0:
+      printf("\n");
       break;
     case 1:
-      print(H);
+      print_block(H);
       break;
-    case 2: 
+    case 2:
       printf("Enter the column you want to print: ");
-      scanf("%d",&col); 
+      scanf("%d",&col);
       print_node(ret_col(H,col));
       break;
-    default: 
-      printf("Wrong input");
+    default:
+      printf("Wrong input\n");
   }
+}
+void length_data()
+{
+  int choice;
+  printf("choice:\n0.Back\n1.Length of each column\n2.Total no. of cells\n:");
+  scanf("%d",&choice);
+  switch(choice)
+  {
+    case 0:
+      printf("\n");
+      break;
+    case 1:
+      printf("Length of each colummn is: %d\n",H->length);
+      break;
+    case 2:
+      printf("Total number of Cells: %d\n",H->length * no_column(H));
+      break;
+    default:
+      printf("Wrong input\n");
+    }
 }
 void insert()
 {
@@ -77,10 +80,10 @@ void insert()
   scanf("%d",&choice);
   switch(choice)
   {
-    case 0: 
-
+    case 0:
+      printf("\n");
       break;
-    case 1: 
+    case 1:
       printf("Enter the x cordinate: ");
       scanf("%d",&x);
       printf("Enter the y cordinate: ");
@@ -88,15 +91,15 @@ void insert()
       printf("Eneter the value you want to replace with: ");
       scanf("%d",&ele);
       change_ele(x,y,H,ele);
-      break
-    case 2: 
+      break;
+    case 2:
       printf("Enter the column number: ");
       scanf("%d",&x);
       printf("Enter element you want to insert: ");
       scanf("%d",&ele);
       insert_col(H,x,ele);
       break;
-    case 3: 
+    case 3:
       printf("Enter the x cordinate: ");
       scanf("%d",&x);
       printf("Enter the y cordinate: ");
@@ -109,85 +112,70 @@ void insert()
       init_end(&H,&T);
       break;
     case 5:
-      init_fornt(&H,&T);
+      init_front(&H,&T);
       break;
     default:
       printf("Worng input\n");
-  } 
+  }
+}
+void delete()
+{
+  int choice,x,y;
+  printf("\nChoice: \n0.Back\n1.Delete a column\n2.Delete a cell\n:");
+  scanf("%d",&choice);
+  switch(choice)
+  {
+    case 0:
+      printf("\n");
+      break;
+    case 1:
+      printf("Enter the column number you want to delete: ");
+      scanf("%d",&x);
+      del_col(&H,&T,ret_col(H,x));
+      break;
+    case 2:
+      printf("Enter the x cordinate: ");
+      scanf("%d",&x);
+      printf("Enter the y cordinate: ");
+      scanf("%d",&y);
+      del_cell_pos(x,y,H);
+      break;
+    default:
+      printf("Worng input\n");
+  }
 }
 void main()
 {
-  
-}
-//void main() 
-//{
-//  int choice;
-//  int x,y;//for coordinate;
-//  int key;//for search key;
-//  int ele;//element you want to insert
-//  ll_carrier *H,*T;
-//  H = T = NULL;
-//  init_end(&H,&T);
-//  insert_end(H,H,0);//BY default the sheet will contain only one cell with default value of 0
-//                    //This will definately change.
-//  while(1)
-//  {
-//    menu();
-//    scanf("%d",&choice);
-//    switch(choice)
-//    {
-//      case 1:
-//        init_front(&H,&T);
-//        break;
-//      case 2:
-//        init_end(&H,&T);
-//        break;
-//      case 3:
-//        printf("Enter the x: ");
-//        scanf("%d",&x);
-//        printf("Enter the y");
-//        scanf("%d",&y);
-//        printf("Enter the element you want to insert: ");
-//        scanf("%d",&ele);
-//        change_ele(x,y,H,ele);
-//        break;
-//      case 4:
-//        printf("The x co-ordinate you want: ");
-//        scanf("%d",&x);
-//        printf("The y co-ordinate you want: ");
-//        scanf("%d",&y);
-//        printf("Enter the elemt you want to insert: ");
-//        scanf("%d",&ele);
-//        insert_pos(x,y,H,ele);
-//        break;
-//      case 5: 
-//        printf("Lenght of each column: %d\n",H->length);
-//        break;
-//      case 6: 
-//        printf("Number of cloumns: %d\n",no_column(H));
-//        break;
-//      case 7:
-//        printf("Enter the element you want to search: ");
-//        scanf("%d",&ele);
-//        pos(H,ele,1);
-//        break;
-//      case 8:
-//        printf("Enter the column number you want to print: ");
-//        scanf("%d",&x);
-//        print_node(ret_col(H,x));
-//        break;
-//      case 9: 
-//        print_block(H);
-//        break;
-//      case 10:
-//        exit(0);
-//      default: 
-//        exit(0);
-//    }
-//  }  
-//}
-void menu()
-{
-  printf("Menu:\n1.insert a row at front\n2.Insert a row at back\n3.Change element with given Co-orinate\n4.Insert at the end of column\n5.length of each row\n6.No of cloumns\n6.No. of total cellsn");
-  printf("7.Position of given element\n8.print a columns\n9.print the whole sheet\n10.Exit\n:");
+  H = T = NULL;
+  init_end(&H,&T);
+  insert_end(H,H,0);
+  int choice_main;
+  while(1)
+  {
+    printf("This main menu contains submenus\n");
+    printf("Choice of submenus:\n1.Internal data related functions\n2.Search functions\n3.Insertion related function\n4.Deletion\n5.Print Related functions\n6.Exit\n: ");
+    scanf("%d",&choice_main);
+    switch(choice_main)
+    {
+      case 1:
+        length_data();
+        break;
+      case 2:
+        search();
+        break;
+      case 3:
+        insert();
+        break;
+      case 4:
+        delete();
+        break;
+      case 5:
+        print();
+        break;
+      case 6:
+        exit(0);
+      default:
+        printf("Menu not defined!");
+    }
+  }
 }
