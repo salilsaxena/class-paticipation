@@ -22,6 +22,99 @@ void menu();
  *
  *
  */
+
+ll_carrier *H=NULL,*T=NULL;
+init_end(&H,&T);
+insert_end(H,H,0);
+
+void search()
+{
+  int ele,choice;
+  printf("\nChoice: \n0.Back\n1.search first position of an element\n2.Search the whole block for an element\n:");
+  scanf("%d",&choice);
+  printf("Enter the element you want to search: ");
+  scanf("%d",&ele);
+  switch(choice)
+  {
+    case 0:
+      break;
+    case 1: 
+      pos(H,ele,0);
+      break;
+    case 2:
+      pos(H,ele,1);
+      break;
+    default:
+      printf("Worng input\n");
+  }
+}
+void print()
+{
+  int choice,col;
+  printf("choice:\n0.Back\n1.Print the whole document\n2.Print a whole column\n:");
+  scanf("%d",&choice);
+  switch(choice)
+  {
+    case 0:
+      break;
+    case 1:
+      print(H);
+      break;
+    case 2: 
+      printf("Enter the column you want to print: ");
+      scanf("%d",&col); 
+      print_node(ret_col(H,col));
+      break;
+    default: 
+      printf("Wrong input");
+  }
+}
+void insert()
+{
+  printf("\nChoice:\n0.back\n1.Change the value of cell\n2.Insert at the end of the column\n3.Insert at cell at specific position\n4.Insert an empty column at the end of Document\n");
+  printf("5.Insert an empty column at the front of Document\n:");
+  int x,y,choice,ele;
+  scanf("%d",&choice);
+  switch(choice)
+  {
+    case 0: 
+
+      break;
+    case 1: 
+      printf("Enter the x cordinate: ");
+      scanf("%d",&x);
+      printf("Enter the y cordinate: ");
+      scanf("%d",&y);
+      printf("Eneter the value you want to replace with: ");
+      scanf("%d",&ele);
+      change_ele(x,y,H,ele);
+      break
+    case 2: 
+      printf("Enter the column number: ");
+      scanf("%d",&x);
+      printf("Enter element you want to insert: ");
+      scanf("%d",&ele);
+      insert_col(H,x,ele);
+      break;
+    case 3: 
+      printf("Enter the x cordinate: ");
+      scanf("%d",&x);
+      printf("Enter the y cordinate: ");
+      scanf("%d",&y);
+      printf("Enter the value you want in that cell: ");
+      scanf("%d",&ele);
+      insert_pos(x,y,H,ele);
+      break;
+    case 4:
+      init_end(&H,&T);
+      break;
+    case 5:
+      init_fornt(&H,&T);
+      break;
+    default:
+      printf("Worng input\n");
+  } 
+}
 void main()
 {
   

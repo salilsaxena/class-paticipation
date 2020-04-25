@@ -1,5 +1,3 @@
 A menu driven program would be nice but try mergeing the similar functions in a same menu, and make a go back menu for seprate menus 
-
-Make a function to insert node at a position give by user.
-
-making a new function which will accept position and will shift each element up by one position.
+Make a function for length related function in `main.c` 
+insert all the sub menu functions in `void main` within a switch case and switch inside a `while(1)` loop
