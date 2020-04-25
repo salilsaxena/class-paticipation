@@ -1,1 +1,0 @@
-del_col have some problem, refer from latest test_main.c

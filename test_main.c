@@ -13,7 +13,7 @@ void main()
   insert_end(H,H,1);
   for(int i = 0;i<9;i++)
   {
-    insert_col(H,H,i+2);
+    insert_col(H,1,i+2);
   }
   //print_block(H);
   init_end(&H,&T);
@@ -23,13 +23,17 @@ void main()
   change_ele(1,2,H,14);
   change_ele(3,9,H,15);
   print_block(H);
-  insert_col(H,H->next,23);
+  insert_col(H,2,23);
   print_block(H);
   del_col(&H,&T,H);//doesnt work with ends of ll_carrier
   ////print_node(H->next->next);
   ////print_block(H->next);
   //print_block(H);
+  init_front(&H,&T);
+  H->tail->val = 66;
+  print_block(H);
   insert_pos(2,5,H,44);
+  print_block(H);
   print_block(H);
   del_cell_pos(2,5,H);
   print_block(H);

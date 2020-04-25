@@ -45,7 +45,7 @@ ll_carrier* ret_col(ll_carrier* H,int column_no) //it wil return the ll_carrier 
   if(column_no > no_column(H))
   {
     printf("Out of Range\n");
-    return ;
+    return NULL;
   }
   ll_carrier* crt = H;
   for(int i = 1;i<column_no;i++)

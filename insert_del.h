@@ -18,10 +18,16 @@ void change_ele(int x,int y,ll_carrier* H,int ele)
   }
   crt->val = ele;
 }
-void insert_col(ll_carrier* H,ll_carrier* node_inp,int ele)
+void insert_col(ll_carrier* H,int x,int ele)
   // only to use it when all the columns ar ebalanced
   // do not use it after init_* it is not designed for NUll nodes
 {
+  if(x > no_column(H))
+  {
+    printf("Out of Range!");
+    return ;
+  }
+  ll_carrier* ref = ret_col(H,x);
   ll_carrier* crt = H;
   node* tmp = NULL;
   while(crt)
@@ -29,7 +35,7 @@ void insert_col(ll_carrier* H,ll_carrier* node_inp,int ele)
     crt->length = crt->length+1;
     tmp = ret_node();
     tmp->D = NULL;
-    if(crt == node_inp)
+    if(crt == ref)
     {
       tmp->val = ele;
     }
@@ -59,7 +65,8 @@ void insert_pos(int x,int y,ll_carrier* H,int ele)
     printf("Out of Range!\n");
     return ;
   }
-  insert_col(H,H,0);//all of the rows will have an extra node now, just need to shift the value.
+  insert_col(H,1,0);
+  //all of the rows will have an extra node now, just need to shift the value.
   int temp,t;
   node* tmp = H->head;
   ll_carrier* crt = H;
@@ -80,7 +87,6 @@ void insert_pos(int x,int y,ll_carrier* H,int ele)
     tmp = tmp->D;
   }
 }
-//to insert LR in insert_end
 void insert_end(ll_carrier* H,ll_carrier *node_inp,int ele) // to insert ele at the end of ll_carrier's list(node)
 {
   node_inp->length++;
