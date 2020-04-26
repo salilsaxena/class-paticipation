@@ -2,6 +2,11 @@
 #include<stdlib.h>
 void print_node(ll_carrier* node_inp) // to print a list(node) carried inside ll_carrier.
 {
+  for(int i = 0 ;i<50;i++)
+  {
+    printf("-");
+  }
+  printf("\n");
   node* crt = node_inp->head;
   if(!crt)
     printf("Empty\n");
@@ -14,10 +19,19 @@ void print_node(ll_carrier* node_inp) // to print a list(node) carried inside ll
     }
     printf("\n");
   }
+  for(int i = 0 ;i<50;i++)
+  {
+    printf("-");
+  }
+  printf("\n");
 }
 void print_block(ll_carrier* H)
 {
-  printf("\n\n");
+  for(int i = 0 ;i<50;i++)
+  {
+    printf("-");
+  }
+  printf("\n");
   node* crt_v = H->head;
   node* crt_h = NULL;
   //printf("\n%d\'\n",crt_v->val);
@@ -32,5 +46,9 @@ void print_block(ll_carrier* H)
     printf("\n");
     crt_v = crt_v->D;
   }
-  printf("\n\n");
+  for(int i = 0 ;i<50;i++)
+  {
+    printf("-");
+  }
+  printf("\n");
 }

@@ -34,14 +34,17 @@ void pos(ll_carrier * H,int ele,int flag_all) //we will directly change the valu
   int f = search_All(H,ele);
   if(f==0)
   {
-    printf("Not found\n");
+    printf("\t\'Not found\'\n");
     return ;
   }
   if(flag_all)
   {
-    printf("\n[");
+    printf("\t[");
   }
-
+  else
+  {
+    printf("\t");
+  }
   int c=0,r=0;
   ll_carrier* right_trav = H;
   node* down_trav;
