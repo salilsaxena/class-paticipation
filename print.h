@@ -55,7 +55,7 @@ void print_block(ll_carrier* H)
     crt_h = crt_v;
     while(crt_h)
     {
-      printf("%d\t",crt_h->val);
+      printf("%.2f\t",crt_h->val);
       crt_h = crt_h->R;
     }
     printf("\n");
