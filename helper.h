@@ -76,3 +76,16 @@ int pos_checker(int x,int y,ll_carrier* H)
   else 
     return 1;
 }
+void avg(ll_carrier* H,int col)
+{
+  ll_carrier* cols = ret_col(H,col);
+  float avg;
+  node* crt =cols->head;
+  while(crt)
+  {
+    avg += crt->val;
+    crt = crt->D;
+  }
+  avg = avg/cols->length;
+  printf("%.2f\n",avg);
+}
