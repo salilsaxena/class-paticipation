@@ -14,7 +14,7 @@ void print_node(ll_carrier* node_inp) // to print a list(node) carried inside ll
   {
     while(crt)
     {
-      printf("%f,",crt->val);
+      printf("%.2f,",crt->val);
       crt = crt->D;
     }
     printf("\n");
@@ -34,13 +34,28 @@ void print_block(ll_carrier* H)
   printf("\n");
   node* crt_v = H->head;
   node* crt_h = NULL;
-  //printf("\n%d\'\n",crt_v->val);
+  int upper_ind=1,left_ind=1;
+  int flag_v = 0,flag_h = 0;
+  printf("   \t");
+  for(int i = 0;i<no_column(H);i++)
+  {
+    printf("%d\t",i+1);
+  }
+  printf("\n");
+  //
+  for(int i = 0;i<5+9*no_column(H);i++)
+  {
+    printf("-");
+  }
+  printf("\n");
   while(crt_v)
   {
+    printf("%-4s|\t",itoa(left_ind,10)); //itoa is a self made fuction which converts int to str, can be found in helper.h
+    left_ind++;
     crt_h = crt_v;
     while(crt_h)
     {
-      printf("%f\t",crt_h->val);
+      printf("%d\t",crt_h->val);
       crt_h = crt_h->R;
     }
     printf("\n");
