@@ -4,5 +4,6 @@ have started inserting float ask other mebers too, and test them too.
 do we still need search.h: 
   we might as finding position will be an easy task 
 have to make avg function.
+ask teammates: should we allow user to add integer values?
 print_block must also carry indexes while indexes(merge soon).
 tag named `before_float` is made which contains totally safe build, revert back to it OR dont mere if found in any kind of confusion.
