@@ -39,4 +39,5 @@ void main()
   print_block(H);
   pos(H,15,1);
   avg(H,2);
+  print_block(H);
 }
