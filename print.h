@@ -34,9 +34,24 @@ void print_block(ll_carrier* H)
   printf("\n");
   node* crt_v = H->head;
   node* crt_h = NULL;
-  //printf("\n%d\'\n",crt_v->val);
+  int upper_ind=1,left_ind=1;
+  int flag_v = 0,flag_h = 0;
+  printf("   \t");
+  for(int i = 0;i<no_column(H);i++)
+  {
+    printf("%d\t",i+1);
+  }
+  printf("\n");
+  //
+  for(int i = 0;i<5+7*no_column(H);i++)
+  {
+    printf("-");
+  }
+  printf("\n");
   while(crt_v)
   {
+    printf("%-4s|\t",itoa(left_ind,10)); //itoa is a self made fuction which converts int to str, can be found in helper.h
+    left_ind++;
     crt_h = crt_v;
     while(crt_h)
     {
