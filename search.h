@@ -57,7 +57,7 @@ void pos(ll_carrier * H,float ele,int flag_all) //we will directly change the va
         r++;
         if(down_trav->val == ele)
         {
-          printf("(%d,%d)",r,c);
+          printf("(%d,%d)",c,r);
           if(flag_all==0)
           {
             printf("\n");
