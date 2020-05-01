@@ -79,7 +79,7 @@ int pos_checker(int x,int y,ll_carrier* H)
 void insert_col(ll_carrier*,int,float);
 void change_ele(int,int,ll_carrier*,float);
 //just adding them for safety
-void avg(ll_carrier* H,int col)
+float avg(ll_carrier* H,int col)
 {
   ll_carrier* cols = ret_col(H,col);
   float avg;
@@ -90,27 +90,40 @@ void avg(ll_carrier* H,int col)
     crt = crt->D;
   }
   avg = avg/cols->length;
-  printf("\t\"Avg of %d column is: %.2f\"\n",col,avg);
-  char y_n;
-  int choice;
-  printf("Would you like to add it in the spreadsheet: ");
-  scanf("%c",&y_n);
-  if(y_n == 'y'|| y_n=='Y')
-  {
-    printf("\t\tChoice:\n\t\t0.Back\n\t\t1.Add it to the End of column\n\t\t2.Change the value of end of column\n\t\t:");
-    scanf("%d",&choice);
-    switch(choice)
-    {
-      case 0: 
-        break;
-      case 2: 
-        insert_col(H,col,avg);
-        break;
-      case 1:
-        change_ele(col,H->length,H,avg);
-        break;
-      default:
-        printf("NO\n");
-    }
-  }
+  return avg;
 }
+//void avg(ll_carrier* H,int col)
+//{
+//  ll_carrier* cols = ret_col(H,col);
+//  float avg;
+//  node* crt =cols->head;
+//  while(crt)
+//  {
+//    avg += crt->val;
+//    crt = crt->D;
+//  }
+//  avg = avg/cols->length;
+//  char y_n;
+//  int choice;
+//  printf("Would you like to add it in the spreadsheet: ");
+//  scanf("%c",&y_n);
+//  printf("\t\"Avg of %d column is: %.2f\"\n",col,avg);
+//  if(y_n == 'y'|| y_n=='Y')
+//  {
+//    printf("\t\tChoice:\n\t\t0.Back\n\t\t1.Add it to the End of column\n\t\t2.Change the value of end of column\n\t\t:");
+//    scanf("%d",&choice);
+//    switch(choice)
+//    {
+//      case 0: 
+//        break;
+//      case 1: 
+//        insert_col(H,col,avg);
+//        break;
+//      case 2:
+//        change_ele(col,H->length,H,avg);
+//        break;
+//      default:
+//        printf("NO\n");
+//    }
+//  }
+//}

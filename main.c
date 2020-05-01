@@ -75,9 +75,12 @@ void length_data()
 }
 void insert()
 {
-  printf("\n\tChoice:\n\t0.back\n\t1.Change the value of cell\n\t2.Insert at the end of the column\n\t3.Insert at cell at specific position\n\t4.Insert an empty column at the end of Document\n\t");
-  printf("5.Insert an empty column at the front of Document\n\t:");
+  printf("\n\tChoice:\n\t0.back\n\t1.Change the value of cell\n\t2.Insert at the end of the column\n\t3.Insert at cell at specific position\n\t4.Insert an empty column at the end of Document");
+  printf("5.Insert an empty column at the front of Document\n\t6.Avg of a column\n\t:");
   int x,y,choice,ele;
+  float av;
+  //char y_n;
+  int y_n;
   scanf("%d",&choice);
   switch(choice)
   {
@@ -115,6 +118,33 @@ void insert()
     case 5:
       init_front(&H,&T);
       break;
+    case 6:
+      printf("\tEnter the column number for avg: ");
+      scanf("%d",&x);
+      printf("\tWould you like to add it in the spreadsheet: ");
+      scanf("%d",&y_n); //y_n is not getting accepted.
+      av = avg(H,x);
+      int choice;
+      printf("\tAvg of %d column is: %.2f\n",x,av);
+      if(y_n==1)
+      {
+        printf("\t\tChoice:\n\t\t0.Back\n\t\t1.Add it to the End of column\n\t\t2.Change the value of end of column\n\t\t:");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+          case 0: 
+            break;
+          case 1: 
+            insert_col(H,x,av);
+            break;
+          case 2:
+            change_ele(x,H->length,H,av);
+            break;
+          default:
+            printf("NO\n");
+        }
+      }
+      break;
     default:
       printf("\tWorng input\n");
   }
@@ -130,6 +160,11 @@ void delete()
       printf("\n");
       break;
     case 1:
+      if(!H->next)
+      {
+        printf("\tOnly one Column left, cant let you delete it\n");
+        break;
+      }
       printf("\tEnter the column number you want to delete: ");
       scanf("%d",&x);
       del_col(&H,&T,ret_col(H,x));
@@ -168,6 +203,11 @@ void main()
         insert();
         break;
       case 4:
+        if(total_cells(H)==1)
+        {
+          printf("\tOnly one cell left, cant let you delete it!\n");
+          break;
+        }
         delete();
         break;
       case 5:

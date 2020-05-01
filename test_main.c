@@ -38,6 +38,6 @@ void main()
   del_cell_pos(2,5,H);
   print_block(H);
   pos(H,15,1);
-  avg(H,2);
+  avg(H,1);
   print_block(H);
 }
