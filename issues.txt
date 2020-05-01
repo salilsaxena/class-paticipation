@@ -1,12 +1,8 @@
-Dont let user delete when a single column or cell is left.
-  start by blocking delete function
 have started inserting float ask other members too, and test them too.
 
 do we still need search.h: 
   we might as finding position will be an easy task 
 
-have to make avg function.
-  make it return float(do I have to?)
   
 ask teammates: 
   should we allow user to add integer values only?

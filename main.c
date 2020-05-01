@@ -121,7 +121,12 @@ void insert()
     case 6:
       printf("\tEnter the column number for avg: ");
       scanf("%d",&x);
-      printf("\tWould you like to add it in the spreadsheet: ");
+      if(x>no_column(H))
+      {
+        printf("Out of range\n");
+        break;
+      }
+      printf("\tWould you like to add it in the spreadsheet 1\\0: ");
       scanf("%d",&y_n); //y_n is not getting accepted.
       av = avg(H,x);
       int choice;
