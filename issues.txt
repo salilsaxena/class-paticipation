@@ -1,0 +1,14 @@
+Dont let user delete when a single column or cell is left.
+
+have started inserting float ask other mebers too, and test them too.
+
+do we still need search.h: 
+  we might as finding position will be an easy task 
+
+have to make avg function.
+  make it return float(do I have to?)
+  add a ability to add avg to end of column or change the value to end of of the column.
+  
+ask teammates: should we allow user to add integer values?
+
+tag named `before_float` is made which contains totally safe build, revert back to it OR dont mere if found in any kind of confusion.

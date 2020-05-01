@@ -1,6 +1,17 @@
 #include<stdio.h>
 #include<stdlib.h>
-
+<<<<<<< Updated upstream
+char* itoa(int val, int base)
+=======
+char* int2str(int val, int base)
+>>>>>>> Stashed changes
+{
+	static char buf[32] = {0};
+	int i = 30;
+	for(; val && i ; --i, val /= base)
+		buf[i] = "0123456789abcdef"[val % base];
+	return &buf[i+1];
+}
 int no_column(ll_carrier* H)
 {
   int c = 0;
@@ -69,3 +80,68 @@ int pos_checker(int x,int y,ll_carrier* H)
   else 
     return 1;
 }
+void insert_col(ll_carrier*,int,float);
+void change_ele(int,int,ll_carrier*,float);
+//just adding them for safety
+void avg(ll_carrier* H,int col)
+{
+  ll_carrier* cols = ret_col(H,col);
+  float avg;
+  node* crt =cols->head;
+  while(crt)
+  {
+    avg += crt->val;
+    crt = crt->D;
+  }
+  avg = avg/cols->length;
+  printf("\t\"Avg of %d column is: %.2f\"\n",col,avg);
+  char y_n;
+  int choice;
+  printf("Would you like to add it in the spreadsheet: ");
+  scanf("%c",&y_n);
+  if(y_n == 'y'|| y_n=='Y')
+  {
+    printf("\t\tChoice:\n\t\t0.Back\n\t\t1.Add it to the End of column\n\t\t2.Change the value of end of column\n\t\t:");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+      case 0: 
+        break;
+      case 2: 
+        insert_col(H,col,avg);
+        break;
+      case 1:
+        change_ele(col,H->length,H,avg);
+        break;
+      default:
+        printf("NO\n");
+    }
+  }
+}
+<<<<<<< Updated upstream
+=======
+void save(ll_carrier* H)
+{
+  FILE* f = fopen("gg.csv","w");
+  node* tmp,*crt = H->head;
+  while(crt)
+  {
+    tmp = crt;
+    while(tmp)
+    {
+      if(tmp->R)
+      {
+        fprintf(f,"%f,",tmp->val);
+      }
+      else
+      {
+        fprintf(f,"%f",tmp->val);
+      }
+      tmp = tmp->R;
+    }
+    fprintf(f,"\n");
+    crt = crt->D;
+  }
+  fclose(f);
+}
+>>>>>>> Stashed changes

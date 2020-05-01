@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 //Search functions start here
-int search_All(ll_carrier* H,int ele)
+int search_All(ll_carrier* H,float  ele)
 //complexity would be n**2
 // any suggestions for lowering it. PLS note we cant sort the LLs
 {
@@ -17,7 +17,7 @@ int search_All(ll_carrier* H,int ele)
       down_trav = right_trav->head;
       while(down_trav && !f)
       {
-          if(down_trav->val == ele)
+          if(down_trav->val == ele || (down_trav->val<ele && down_trav->val>ele-0.1))//for estimate values
           {
             f = 1;
           }
@@ -28,7 +28,7 @@ int search_All(ll_carrier* H,int ele)
     return f;
   }
 }
-void pos(ll_carrier * H,int ele,int flag_all) //we will directly change the values of column and row
+void pos(ll_carrier * H,float ele,int flag_all) //we will directly change the values of column and row
 {
   // if flag_all == 0  the first position will only be printed out;
   int f = search_All(H,ele);
@@ -57,7 +57,7 @@ void pos(ll_carrier * H,int ele,int flag_all) //we will directly change the valu
         r++;
         if(down_trav->val == ele)
         {
-          printf("(%d,%d)",r,c);
+          printf("(%d,%d)",c,r);
           if(flag_all==0)
           {
             printf("\n");

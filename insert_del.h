@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-void change_ele(int x,int y,ll_carrier* H,int ele)
+void change_ele(int x,int y,ll_carrier* H,float ele)
 {
   if(!pos_checker(x,y,H))
   {
@@ -18,7 +18,7 @@ void change_ele(int x,int y,ll_carrier* H,int ele)
   }
   crt->val = ele;
 }
-void insert_col(ll_carrier* H,int x,int ele)
+void insert_col(ll_carrier* H,int x,float ele)
   // only to use it when all the columns ar ebalanced
   // do not use it after init_* it is not designed for NUll nodes
 {
@@ -58,7 +58,7 @@ void insert_col(ll_carrier* H,int x,int ele)
     crt = crt->next;
   }
 }
-void insert_pos(int x,int y,ll_carrier* H,int ele)
+void insert_pos(int x,int y,ll_carrier* H,float ele)
 {
   if(!pos_checker(x,y,H))
   {
@@ -87,7 +87,7 @@ void insert_pos(int x,int y,ll_carrier* H,int ele)
     tmp = tmp->D;
   }
 }
-void insert_end(ll_carrier* H,ll_carrier *node_inp,int ele) // to insert ele at the end of ll_carrier's list(node)
+void insert_end(ll_carrier* H,ll_carrier *node_inp,float ele) // to insert ele at the end of ll_carrier's list(node)
 {
   node_inp->length++;
   node* tmp = (node*)malloc(sizeof(node));

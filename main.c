@@ -8,7 +8,8 @@
 ll_carrier *T,*H;
 void search()
 {
-  int ele,choice;
+  float ele;
+  int choice;
   printf("\n\tChoice: \n\t0.Back\n\t1.search first position of an element\n\t2.Search the whole block for an element\n\t:");
   scanf("%d",&choice);
   switch(choice)
@@ -18,12 +19,12 @@ void search()
       break;
     case 1:
       printf("\tEnter the element you want to search: ");
-      scanf("%d",&ele);
+      scanf("%f",&ele);
       pos(H,ele,0);
       break;
     case 2:
       printf("\tEnter the element you want to search: ");
-      scanf("%d",&ele);
+      scanf("%f",&ele);
       pos(H,ele,1);
       break;
     default:
