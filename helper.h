@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-char* itoa(int val, int base)
+char* int2str(int val, int base)
 {
 	static char buf[32] = {0};
 	int i = 30;

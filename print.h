@@ -50,7 +50,7 @@ void print_block(ll_carrier* H)
   printf("\n");
   while(crt_v)
   {
-    printf("%-4s|\t",itoa(left_ind,10)); //itoa is a self made fuction which converts int to str, can be found in helper.h
+    printf("%-4s|\t",int2str(left_ind,10)); //itoa is a self made fuction which converts int to str, can be found in helper.h
     left_ind++;
     crt_h = crt_v;
     while(crt_h)
