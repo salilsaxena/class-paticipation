@@ -1,11 +1,21 @@
 have started inserting float ask other members too, and test them too.
 
-do we still need search.h: 
-  we might as finding position will be an easy task 
+do we still need search.h:
+  we might as finding position will be an easy task
+  tryng to give .2 digit precision only
 
-  
-ask teammates: 
+ask teammates:
   should we allow user to add integer values only?
     if `no` then you have limit 2 after decimal value!
+      we have 2 options here:
+        let the user add float numbers but .2f will only be visible
+        OR
+        user can only add .2f numbers(have to make a function for that)
+
+Have to make save function to let user make a csv file out of it.
+  set the name of saved files name.
+
+have to take care of search.h
 
 tag named `before_float` is made which contains totally safe build, revert back to it OR dont mere if found in any kind of confusion.
+

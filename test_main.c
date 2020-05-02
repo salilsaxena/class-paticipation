@@ -40,4 +40,5 @@ void main()
   pos(H,15,1);
   avg(H,1);
   print_block(H);
+  save(H);
 }

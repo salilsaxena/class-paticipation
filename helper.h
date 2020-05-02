@@ -92,38 +92,26 @@ float avg(ll_carrier* H,int col)
   avg = avg/cols->length;
   return avg;
 }
-//void avg(ll_carrier* H,int col)
-//{
-//  ll_carrier* cols = ret_col(H,col);
-//  float avg;
-//  node* crt =cols->head;
-//  while(crt)
-//  {
-//    avg += crt->val;
-//    crt = crt->D;
-//  }
-//  avg = avg/cols->length;
-//  char y_n;
-//  int choice;
-//  printf("Would you like to add it in the spreadsheet: ");
-//  scanf("%c",&y_n);
-//  printf("\t\"Avg of %d column is: %.2f\"\n",col,avg);
-//  if(y_n == 'y'|| y_n=='Y')
-//  {
-//    printf("\t\tChoice:\n\t\t0.Back\n\t\t1.Add it to the End of column\n\t\t2.Change the value of end of column\n\t\t:");
-//    scanf("%d",&choice);
-//    switch(choice)
-//    {
-//      case 0: 
-//        break;
-//      case 1: 
-//        insert_col(H,col,avg);
-//        break;
-//      case 2:
-//        change_ele(col,H->length,H,avg);
-//        break;
-//      default:
-//        printf("NO\n");
-//    }
-//  }
-//}
+void save(ll_carrier* H)
+{
+  FILE* f = fopen("saved_csv.csv","w");
+  node* tmp,*crt = H->head;
+  while(crt)
+  {
+    tmp = crt;
+    while(tmp)
+    {
+      if(tmp->R)
+      {
+        fprintf(f,"%f,",tmp->val);
+      }
+      else
+      { 
+        fprintf(f,"%f",tmp->val);
+      }
+      tmp = tmp->R;
+    }
+    fprintf(f,"\n");
+    crt = crt->D;
+  }
+}
