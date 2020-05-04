@@ -75,8 +75,8 @@ void length_data()
 }
 void insert()
 {
-  printf("\n\tChoice:\n\t0.back\n\t1.Change the value of cell\n\t2.Insert at the end of the column\n\t3.Insert at cell at specific position\n\t4.Insert an empty column at the end of Document\n\t");
-  printf("5.Insert an empty column at the front of Document\n\t:");
+  printf("\n\tChoice:\n\t0.back\n\t1.Change the value of cell\n\t2.Insert at the end of the column\n\t3.Insert a cell at specific position\n\t4.Insert an empty column at the front of Document\n\t");
+  printf("5.Insert an empty column at end the of Document\n\t:");
   int x,y,choice,ele;
   scanf("%d",&choice);
   switch(choice)
@@ -110,10 +110,10 @@ void insert()
       insert_pos(x,y,H,ele);
       break;
     case 4:
-      init_end(&H,&T);
+      init_front(&H,&T);
       break;
     case 5:
-      init_front(&H,&T);
+      init_end(&H,&T);
       break;
     default:
       printf("\tWorng input\n");

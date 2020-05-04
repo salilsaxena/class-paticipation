@@ -1,10 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-<<<<<<< Updated upstream
-char* itoa(int val, int base)
-=======
 char* int2str(int val, int base)
->>>>>>> Stashed changes
 {
 	static char buf[32] = {0};
 	int i = 30;
@@ -118,8 +114,6 @@ void avg(ll_carrier* H,int col)
     }
   }
 }
-<<<<<<< Updated upstream
-=======
 void save(ll_carrier* H)
 {
   FILE* f = fopen("gg.csv","w");
@@ -144,4 +138,3 @@ void save(ll_carrier* H)
   }
   fclose(f);
 }
->>>>>>> Stashed changes
