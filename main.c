@@ -75,8 +75,8 @@ void length_data()
 }
 void insert()
 {
-  printf("\n\tChoice:\n\t0.back\n\t1.Change the value of cell\n\t2.Insert at the end of the column\n\t3.Insert at cell at specific position\n\t4.Insert an empty column at the end of Document");
-  printf("5.Insert an empty column at the front of Document\n\t6.Avg of a column\n\t:");
+  printf("\n\tChoice:\n\t0.back\n\t1.Change the value of cell\n\t2.Insert at the end of the column\n\t3.Insert a cell at specific position\n\t4.Insert an empty column at the front of Document\n\t");
+  printf("5.Insert an empty column at the end of Document\n\t6.Avg of a column\n\t:");
   int x,y,choice,ele;
   float av;
   //char y_n;
@@ -106,17 +106,27 @@ void insert()
     case 3:
       printf("\tEnter the x cordinate: ");
       scanf("%d",&x);
+      if(x>no_column(H))
+      {
+        printf("Out of range\n");
+        break;
+      }
       printf("\tEnter the y cordinate: ");
       scanf("%d",&y);
+      if(y>H->length)
+      {
+        printf("Out of range\n");
+        break;
+      }
       printf("\tEnter the value you want in that cell: ");
       scanf("%d",&ele);
       insert_pos(x,y,H,ele);
       break;
     case 4:
-      init_end(&H,&T);
+      init_front(&H,&T);
       break;
     case 5:
-      init_front(&H,&T);
+      init_end(&H,&T);
       break;
     case 6:
       printf("\tEnter the column number for avg: ");
@@ -191,6 +201,7 @@ void main()
   init_end(&H,&T);
   insert_end(H,H,0);
   int choice_main;
+  int y_n;
   while(1)
   {
     printf("This main menu contains submenus\n");
@@ -219,6 +230,10 @@ void main()
         print();
         break;
       case 6:
+        printf("\nWould you like to save this SpreadSheet as .csv file: ");
+        scanf("%d",&y_n);
+        if(y_n)
+          save(H);
         exit(0);
       default:
         printf("Menu not defined!\n");

@@ -60,11 +60,6 @@ void insert_col(ll_carrier* H,int x,float ele)
 }
 void insert_pos(int x,int y,ll_carrier* H,float ele)
 {
-  if(!pos_checker(x,y,H))
-  {
-    printf("Out of Range!\n");
-    return ;
-  }
   insert_col(H,1,0);
   //all of the rows will have an extra node now, just need to shift the value.
   int temp,t;
