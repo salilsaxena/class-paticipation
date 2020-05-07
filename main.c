@@ -33,7 +33,7 @@ void search()
 }
 void print()
 {
-  int choice,col;
+  int choice=-1,col;
   printf("\n\tChoice:\n\t0.Back\n\t1.Print the whole document\n\t2.Print a whole column\n\t:");
   scanf("%d",&choice);
   switch(choice)
@@ -45,7 +45,7 @@ void print()
       print_block(H);
       break;
     case 2:
-      printf("\nEnter the column you want to print: ");
+      printf("\n\tEnter the column you want to print: ");
       scanf("%d",&col);
       print_node(ret_col(H,col));
       break;
@@ -75,124 +75,163 @@ void length_data()
 }
 void insert()
 {
-  printf("\n\tChoice:\n\t0.back\n\t1.Change the value of cell\n\t2.Insert at the end of the column\n\t3.Insert a cell at specific position\n\t4.Insert an empty column at the front of Document\n\t");
-  printf("5.Insert an empty column at the end of Document\n\t6.Avg of a column\n\t:");
-  int x,y,choice,ele;
-  float av;
-  //char y_n;
-  int y_n;
-  scanf("%d",&choice);
-  switch(choice)
+  int x,y,choice=-1,ele;
+  while(choice!=0)
   {
-    case 0:
-      printf("\n");
-      break;
-    case 1:
-      printf("\tEnter the x cordinate: ");
-      scanf("%d",&x);
-      printf("\tEnter the y cordinate: ");
-      scanf("%d",&y);
-      printf("\tEneter the value you want to replace with: ");
-      scanf("%d",&ele);
-      change_ele(x,y,H,ele);
-      break;
-    case 2:
-      printf("\tEnter the column number: ");
-      scanf("%d",&x);
-      printf("\tEnter element you want to insert: ");
-      scanf("%d",&ele);
-      insert_col(H,x,ele);
-      break;
-    case 3:
-      printf("\tEnter the x cordinate: ");
-      scanf("%d",&x);
-      //if(x>no_column(H))
-      //{
-      //  printf("Out of range\n");
-      //  break;
-      //}
-      printf("\tEnter the y cordinate: ");
-      scanf("%d",&y);
-      //if(y>H->length)
-      //{
-      //  printf("Out of range\n");
-      //  break;
-      //}
-      printf("\tEnter the value you want in that cell: ");
-      scanf("%d",&ele);
-      insert_pos(x,y,H,T,ele);
-      break;
-    case 4:
-      init_front(&H,&T);
-      break;
-    case 5:
-      init_end(&H,&T);
-      break;
-    case 6:
-      printf("\tEnter the column number for avg: ");
-      scanf("%d",&x);
-      if(x>no_column(H))
-      {
-        printf("Out of range\n");
+    printf("\n\tChoice:\n\t0.back\n\t1.Change the value of cell\n\t2.Insert at the end of the column\n\t3.Insert a cell at specific position\n\t4.Insert an empty column at the front of Document\n\t");
+    printf("5.Insert an empty column at the end of Document\n\t6.Avg of a column\n\t7.Avg of a row\n\t:");
+    float av;
+    //char y_n;
+    int y_n;
+    scanf("%d",&choice);
+    switch(choice)
+    {
+      case 0:
+        printf("\n");
         break;
-      }
-      printf("\tWould you like to add it in the spreadsheet 1\\0: ");
-      scanf("%d",&y_n); //y_n is not getting accepted.
-      av = avg(H,x);
-      int choice;
-      printf("\tAvg of %d column is: %.2f\n",x,av);
-      if(y_n==1)
-      {
-        printf("\t\tChoice:\n\t\t0.Back\n\t\t1.Add it to the End of column\n\t\t2.Change the value of end of column\n\t\t:");
-        scanf("%d",&choice);
-        switch(choice)
+      case 1:
+        printf("\tEnter the x cordinate: ");
+        scanf("%d",&x);
+        printf("\tEnter the y cordinate: ");
+        scanf("%d",&y);
+        printf("\tEneter the value you want to replace with: ");
+        scanf("%d",&ele);
+        change_ele(x,y,H,ele);
+        break;
+      case 2:
+        printf("\tEnter the column number: ");
+        scanf("%d",&x);
+        printf("\tEnter element you want to insert: ");
+        scanf("%d",&ele);
+        insert_col(H,x,ele);
+        break;
+      case 3:
+        printf("\tEnter the x cordinate: ");
+        scanf("%d",&x);
+        //if(x>no_column(H))
+        //{
+        //  printf("Out of range\n");
+        //  break;
+        //}
+        printf("\tEnter the y cordinate: ");
+        scanf("%d",&y);
+        //if(y>H->length)
+        //{
+        //  printf("Out of range\n");
+        //  break;
+        //}
+        printf("\tEnter the value you want in that cell: ");
+        scanf("%d",&ele);
+        insert_pos(x,y,H,T,ele);
+        break;
+      case 4:
+        init_front(&H,&T);
+        break;
+      case 5:
+        init_end(&H,&T);
+        break;
+      case 6:
+        printf("\tEnter the column number for avg: ");
+        scanf("%d",&x);
+        if(x>no_column(H))
         {
-          case 0: 
-            break;
-          case 1: 
-            insert_col(H,x,av);
-            break;
-          case 2:
-            change_ele(x,H->length,H,av);
-            break;
-          default:
-            printf("NO\n");
+          printf("Out of range\n");
+          break;
         }
-      }
-      break;
-    default:
-      printf("\tWorng input\n");
+        printf("\tWould you like to add it in the spreadsheet 1\\0: ");
+        scanf("%d",&y_n); //y_n is not getting accepted.
+        av = avg_col(H,x);
+        int choice;
+        printf("\tAvg of %d column is: %.2f\n",x,av);
+        if(y_n==1)
+        {
+          printf("\t\tChoice:\n\t\t0.Back\n\t\t1.Add it to the End of column\n\t\t2.Change the value of end of column\n\t\t:");
+          scanf("%d",&choice);
+          switch(choice)
+          {
+            case 0: 
+              break;
+            case 1: 
+              insert_col(H,x,av);
+              break;
+            case 2:
+              change_ele(x,H->length,H,av);
+              break;
+            default:
+              printf("NO\n");
+          }
+        }
+        break;
+      case 7: 
+        printf("\tEnter the row number for avg: ");
+        scanf("%d",&y);
+        if(y>H->length)
+        {
+          printf("Out of range\n");
+          break;
+        }
+        printf("\tWould you like to add it in the spreadsheet 1\\0: ");
+        scanf("%d",&y_n); //y_n is not getting accepted.
+        av = avg_row(H,y);
+        printf("\tAvg of %d row is: %.2f\n",y,av);
+        if(y_n==1)
+        {
+          printf("\t\tChoice:\n\t\t0.Back\n\t\t1.Add it to the End of row\n\t\t2.Change the value of end of row\n\t\t:");
+          scanf("%d",&choice);
+          switch(choice)
+          {
+            case 0: 
+              break;
+            case 1: 
+              init_end(&H,&T);
+              change_ele(no_column(H),y,H,av);
+              //insert_col(H,x,av);
+              break;
+            case 2:
+              change_ele(no_column(H),y,H,av);
+              break;
+            default:
+              printf("NO\n");
+          }
+        }
+        break;
+      default:
+        printf("\tWorng input\n");
+    }
   }
 }
 void delete()
 {
   int choice,x,y;
-  printf("\n\tChoice: \n\t0.Back\n\t1.Delete a column\n\t2.Delete a cell\n\t:");
-  scanf("%d",&choice);
-  switch(choice)
+  while(choice!=0) //a single cell case will never arrive 
   {
-    case 0:
-      printf("\n");
-      break;
-    case 1:
-      if(!H->next)
-      {
-        printf("\tOnly one Column left, cant let you delete it\n");
+    printf("\n\tChoice: \n\t0.Back\n\t1.Delete a column\n\t2.Delete a cell\n\t:");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+      case 0:
+        printf("\n");
         break;
-      }
-      printf("\tEnter the column number you want to delete: ");
-      scanf("%d",&x);
-      del_col(&H,&T,ret_col(H,x));
-      break;
-    case 2:
-      printf("\tEnter the x cordinate: ");
-      scanf("%d",&x);
-      printf("\tEnter the y cordinate: ");
-      scanf("%d",&y);
-      del_cell_pos(x,y,H);
-      break;
-    default:
-      printf("\tWorng input\n");
+      case 1:
+        if(!H->next)
+        {
+          printf("\n\t\"Only one Column left, cant let you delete it\"\n\n");
+          break;
+        }
+        printf("\tEnter the column number you want to delete: ");
+        scanf("%d",&x);
+        del_col(&H,&T,ret_col(H,x));
+        break;
+      case 2:
+        printf("\tEnter the x cordinate: ");
+        scanf("%d",&x);
+        printf("\tEnter the y cordinate: ");
+        scanf("%d",&y);
+        del_cell_pos(x,y,H);
+        break;
+      default:
+        printf("\tWorng input\n");
+    }
   }
 }
 void main()
@@ -221,7 +260,7 @@ void main()
       case 4:
         if(total_cells(H)==1)
         {
-          printf("\tOnly one cell left, cant let you delete it!\n");
+          printf("\n\t\"Only one cell left, cant let you delete it!\"\n\n");
           break;
         }
         delete();

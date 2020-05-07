@@ -39,5 +39,5 @@ void main()
   print_block(H);
   pos(H,15,1);
   print_block(H);
-  printf("%.2f\n",minimum(3,H,0));
+  printf("%f\n",avg_row(H,4));
 }

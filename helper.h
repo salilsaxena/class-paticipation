@@ -20,6 +20,14 @@ int no_column(ll_carrier* H)
   }
   return c;
 }
+//int single_cell(ll_carrier* H)
+//{
+//  if(!H->next && H->length==1)
+//  {
+//    return 1;
+//  }
+//  return 0;
+//}
 int total_cells(ll_carrier* H) 
 {
   int c = H->length;
@@ -80,7 +88,7 @@ int pos_checker(int x,int y,ll_carrier* H)
 void insert_col(ll_carrier*,int,float);
 void change_ele(int,int,ll_carrier*,float);
 //just adding them for safety
-float avg(ll_carrier* H,int col)
+float avg_col(ll_carrier* H,int col)
 {
   ll_carrier* cols = ret_col(H,col);
   float avg;
@@ -91,6 +99,24 @@ float avg(ll_carrier* H,int col)
     crt = crt->D;
   }
   avg = avg/cols->length;
+  return avg;
+}
+float avg_row(ll_carrier* H,int row)
+{
+  int ref = 0;
+  node* crt = H->head;
+  while(ref!=row-1)
+  {
+    ref++;
+    crt = crt->D;
+  }
+  float avg = 0;
+  while(crt)
+  {
+    avg+=crt->val;
+    crt = crt->R;
+  }
+  avg = avg/no_column(H);
   return avg;
 }
 void save(ll_carrier* H)
