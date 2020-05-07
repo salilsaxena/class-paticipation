@@ -106,21 +106,21 @@ void insert()
     case 3:
       printf("\tEnter the x cordinate: ");
       scanf("%d",&x);
-      if(x>no_column(H))
-      {
-        printf("Out of range\n");
-        break;
-      }
+      //if(x>no_column(H))
+      //{
+      //  printf("Out of range\n");
+      //  break;
+      //}
       printf("\tEnter the y cordinate: ");
       scanf("%d",&y);
-      if(y>H->length)
-      {
-        printf("Out of range\n");
-        break;
-      }
+      //if(y>H->length)
+      //{
+      //  printf("Out of range\n");
+      //  break;
+      //}
       printf("\tEnter the value you want in that cell: ");
       scanf("%d",&ele);
-      insert_pos(x,y,H,ele);
+      insert_pos(x,y,H,T,ele);
       break;
     case 4:
       init_front(&H,&T);

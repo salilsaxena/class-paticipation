@@ -1,12 +1,15 @@
 #include<stdio.h>
 #include<stdlib.h>
+void init_end(ll_carrier**,ll_carrier**);
+void init_front(ll_carrier**,ll_carrier**);
+
 void change_ele(int x,int y,ll_carrier* H,float ele)
 {
-  if(!pos_checker(x,y,H))
-  {
-    printf("Out of Range!\n");
-    return ;
-  }
+  //if(!pos_checker(x,y,H))
+  //{
+  //  printf("Out of Range!\n");
+  //  return ;
+  //}
   node* crt = H->head;
   for(int i = 1;i<x;i++)
   {
@@ -58,14 +61,35 @@ void insert_col(ll_carrier* H,int x,float ele)
     crt = crt->next;
   }
 }
-void insert_pos(int x,int y,ll_carrier* H,float ele)
+void insert_pos(int x,int y,ll_carrier* H,ll_carrier* T,float ele)
 {
+  int x_dup = x;
   insert_col(H,1,0);
   //all of the rows will have an extra node now, just need to shift the value.
+  int number_of_column = no_column(H);
+  if(x>number_of_column)
+  {
+    init_end(&H,&T);
+    number_of_column++;
+    x_dup = number_of_column;
+  }
+  if(y>H->length)
+  {
+    printf("jjj\n");
+    if(x<=number_of_column)
+    {
+      change_ele(x,H->length,H,ele);
+    }
+    else
+    {
+      change_ele(number_of_column,H->length,H,ele);
+    }
+    return ;
+  }
   int temp,t;
   node* tmp = H->head;
   ll_carrier* crt = H;
-  crt = ret_col(H,x);
+  crt = ret_col(H,x_dup);
   tmp = crt->head;
   for(int j = 0; j<y-1;j++)
   {

@@ -1,21 +1,17 @@
 have started inserting float ask other members too, and test them too.
 
-do we still need search.h:
-  we might as finding position will be an easy task
-  tryng to give .2 digit precision only
+error handling of maximum and minumum:
+  must be done in main.c
 
-ask teammates:
-  should we allow user to add integer values only?
-    if `no` then you have limit 2 after decimal value!
-      we have 2 options here:
-        let the user add float numbers but .2f will only be visible
-        OR
-        user can only add .2f numbers(have to make a function for that)
+avg for rows. 
 
-Have to make save function to let user make a csv file out of it.
-  set the name of saved files name.
+check functionality of pos_checker(include it in main) 
 
-have to take care of search.h
+insertion_pos: 
+  if the the co-ordinates are out of the range and a new colmun or row are inserted and values are inserted at the position they should have been.
 
+add or substract cells.
+
+add row realted functions to main(eiter make it or insert them to main)
 tag named `before_float` is made which contains totally safe build, revert back to it OR dont mere if found in any kind of confusion.
 

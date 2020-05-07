@@ -32,13 +32,12 @@ void main()
   init_front(&H,&T);
   H->tail->val = 66;
   print_block(H);
-  insert_pos(2,5,H,44);
+  insert_pos(2,5,H,T,44);
   print_block(H);
   print_block(H);
-  del_cell_pos(2,5,H);
+  //del_cell_pos(2,5,H);
   print_block(H);
   pos(H,15,1);
-  avg(H,1);
   print_block(H);
-  save(H);
+  printf("%.2f\n",minimum(3,H,0));
 }

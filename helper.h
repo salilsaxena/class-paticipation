@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<limits.h>
 char* int2str(int val, int base)
 {
 	static char buf[32] = {0};
@@ -113,5 +114,102 @@ void save(ll_carrier* H)
     }
     fprintf(f,"\n");
     crt = crt->D;
+  }
+}
+float maximum(int input,ll_carrier* H,int row_flag)//if row_flag==1 then max of row is printed out
+{
+  node* crt = H->head;
+  int max = 0,ref = 0;
+  if(row_flag)
+  {
+    if(input > H->length)
+    {
+      return -1;//out of range
+    }
+    while(ref!=input-1 && crt) //just for the sanity check
+    {
+      ref++;
+      crt = crt->D;
+    }
+    while(crt)
+    {
+      if(max<crt->val)
+      {
+        max = crt->val;
+      }
+      crt = crt->R;
+    }
+    return max;
+  }
+  else
+  {
+    if(input > no_column(H))
+    {
+      return -1;//out of range
+    }
+    while(ref!=input-1 && crt->R)
+    {
+      ref++;
+      crt = crt->R;
+    }
+    while(crt)
+    {
+      if(max<crt->val)
+      {
+        max = crt->val;
+      }
+      crt = crt->D;
+    }
+    return max;
+  }
+}
+float minimum(int input,ll_carrier* H ,int row_flag)//other thn zero?
+{
+  node* crt = H->head;
+  int min = INT_MAX,ref = 0;
+  if(row_flag)
+  {
+    if(input > H->length)
+    {
+      return -1;//out of range
+    }
+    while(ref!=input-1 && crt) //just for the sanity check
+    {
+      ref++;
+      crt = crt->D;
+    }
+    while(crt)
+    {
+      if(min>crt->val)
+      {
+        min = crt->val;
+      }
+      crt = crt->R;
+    }
+    return min;
+  }
+  else
+  {
+    if(input > no_column(H))
+    {
+      return -1;//out of range
+    }
+    while(ref!=input-1 && crt->R)
+    {
+      ref++;
+      crt = crt->R;
+    }
+    while(crt)
+    {
+      if(crt->val!=0)
+      {
+        if(min>crt->val)
+        {
+          min = crt->val;
+        }
+      }
+      crt = crt->D;
+    }
+    return min;
   }
 }
