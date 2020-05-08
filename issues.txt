@@ -3,15 +3,13 @@ have started inserting float ask other members too, and test them too.
 error handling of maximum and minumum:
   must be done in main.c
 
-avg for rows. 
-
 check functionality of pos_checker(include it in main) 
-
-insertion_pos: 
-  if the the co-ordinates are out of the range and a new colmun or row are inserted and values are inserted at the position they should have been.
 
 add or substract cells.
 
 add row realted functions to main(eiter make it or insert them to main)
+
+segregate all other functons from main to helper_main.h
+
 tag named `before_float` is made which contains totally safe build, revert back to it OR dont mere if found in any kind of confusion.
 
