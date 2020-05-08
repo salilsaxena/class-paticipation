@@ -22,8 +22,6 @@ void change_ele(int x,int y,ll_carrier* H,float ele)
   crt->val = ele;
 }
 void insert_col(ll_carrier* H,int x,float ele)
-  // only to use it when all the columns ar ebalanced
-  // do not use it after init_* it is not designed for NUll nodes
 {
   if(x > no_column(H))
   {
@@ -64,8 +62,6 @@ void insert_col(ll_carrier* H,int x,float ele)
 void insert_pos(int x,int y,ll_carrier* H,ll_carrier* T,float ele)
 {
   int x_dup = x;
-  insert_col(H,1,0);
-  //all of the rows will have an extra node now, just need to shift the value.
   int number_of_column = no_column(H);
   if(x>number_of_column)
   {
@@ -86,6 +82,7 @@ void insert_pos(int x,int y,ll_carrier* H,ll_carrier* T,float ele)
     }
     return ;
   }
+  insert_col(H,1,0);//will insert a new row at the end if y is not ou of range
   int temp,t;
   node* tmp = H->head;
   ll_carrier* crt = H;

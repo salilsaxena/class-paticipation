@@ -40,4 +40,7 @@ void main()
   pos(H,15,1);
   print_block(H);
   printf("%f\n",avg_row(H,4));
+  init_end(&H,&T);
+  print_block(H);
+  printf("%f\n",minimum(4,H,0));
 }

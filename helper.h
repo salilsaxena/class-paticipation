@@ -142,17 +142,17 @@ void save(ll_carrier* H)
     crt = crt->D;
   }
 }
-float maximum(int input,ll_carrier* H,int row_flag)//if row_flag==1 then max of row is printed out
+float maximum(int input,ll_carrier* H,int row_flag)//if row_flag==1 then max of row is considered
 {
   node* crt = H->head;
-  int max = 0,ref = 0;
+  int max = INT_MIN,ref = 0;
   if(row_flag)
   {
     if(input > H->length)
     {
-      return -1;//out of range
+      return INT_MIN;//out of range
     }
-    while(ref!=input-1 && crt) //just for the sanity check
+    while(ref!=input-1) 
     {
       ref++;
       crt = crt->D;
@@ -165,15 +165,14 @@ float maximum(int input,ll_carrier* H,int row_flag)//if row_flag==1 then max of 
       }
       crt = crt->R;
     }
-    return max;
   }
   else
   {
     if(input > no_column(H))
     {
-      return -1;//out of range
+      return INT_MIN;//out of range
     }
-    while(ref!=input-1 && crt->R)
+    while(ref!=input-1)
     {
       ref++;
       crt = crt->R;
@@ -186,8 +185,8 @@ float maximum(int input,ll_carrier* H,int row_flag)//if row_flag==1 then max of 
       }
       crt = crt->D;
     }
-    return max;
   }
+  return INT_MIN;
 }
 float minimum(int input,ll_carrier* H ,int row_flag)//other thn zero?
 {
@@ -197,7 +196,7 @@ float minimum(int input,ll_carrier* H ,int row_flag)//other thn zero?
   {
     if(input > H->length)
     {
-      return -1;//out of range
+      return INT_MAX;//out of range
     }
     while(ref!=input-1 && crt) //just for the sanity check
     {
@@ -212,13 +211,12 @@ float minimum(int input,ll_carrier* H ,int row_flag)//other thn zero?
       }
       crt = crt->R;
     }
-    return min;
   }
   else
   {
     if(input > no_column(H))
     {
-      return -1;//out of range
+      return INT_MAX;//out of range
     }
     while(ref!=input-1 && crt->R)
     {
@@ -236,6 +234,10 @@ float minimum(int input,ll_carrier* H ,int row_flag)//other thn zero?
       }
       crt = crt->D;
     }
-    return min;
   }
+  if(min==INT_MAX)
+  {
+    return 0;
+  }
+  return min;
 }
