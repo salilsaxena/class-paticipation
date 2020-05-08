@@ -77,7 +77,7 @@ void for_column()
       printf("\t\tThe minimum value of Column %d is %.2f\n",y,min);
       break;
     case 2:
-      print("\t\tEnter the Coulmn number: ");
+      printf("\t\tEnter the Coulmn number: ");
       scanf("%d",&y);
       max = maximum(y,H,0);
       if(max==INT_MIN)
@@ -95,11 +95,11 @@ void for_column()
         printf("\tOut of range\n");
         break;
       }
+      avg = avg_col(H,y);
+      printf("\t\tAvg of %d Column is: %.2f\n",y,avg);
       printf("\t\tWould you like to add it in the spreadsheet 1\\0: ");
       scanf("%d",&y_n); //y_n is not getting accepted.
-      avg = avg_col(H,y);
       int choice2;
-      printf("\t\tAvg of %d Column is: %.2f\n",y,avg);
       if(y_n==1)
       {
         printf("\t\tChoice:\n\t\t0.Back\n\t\t1.Add it to the End of Column\n\t\t2.Change the value of end of Column\n\t\t:");
@@ -125,7 +125,7 @@ void for_row()
 {
   int x,choice,y_n;
   float max,min,avg;
-  printf("\t\t0.Back\n\t\t1.Maximum\n\t\t2.Minumum\n\t\t3.Avg");
+  printf("\t\t0.Back\n\t\t1.Minumum\n\t\t2.Maximum\n\t\t3.Avg\n\t\t:");
   scanf("%d",&choice);
   switch(choice)
   {
@@ -143,7 +143,7 @@ void for_row()
       printf("\t\tThe minimum value of Row %d is %.2f\n",x,min);
       break;
     case 2:
-      print("\t\tEnter the Row number: ");
+      printf("\t\tEnter the Row number: ");
       scanf("%d",&x);
       max = maximum(x,H,1);
       if(max==INT_MIN)
@@ -161,14 +161,14 @@ void for_row()
         printf("\tOut of range\n");
         break;
       }
+      avg = avg_row(H,x);
+      printf("\t\tAvg of %d Row is: %.2f\n",x,avg);
       printf("\t\tWould you like to add it in the spreadsheet 1\\0: ");
       scanf("%d",&y_n); //y_n is not getting accepted.
-      avg = avg_row(H,x);
       int choice2;
-      printf("\t\tAvg of %d column is: %.2f\n",x,avg);
       if(y_n==1)
       {
-        printf("\t\tChoice:\n\t\t0.Back\n\t\t1.Add it to the End of Row\n\t\t2.Change the value of end of Row\n\t\t:");
+        printf("\t\tChoice:\n\t\t0.Back\n\t\t1.Add it to a new cell at the end of Row\n\t\t2.Change the value of end of Row\n\t\t:");
         scanf("%d",&choice2);
         switch(choice2)
         {
@@ -220,7 +220,7 @@ void insert()
   while(choice!=0)
   {
     printf("\n\tChoice:\n\t0.back\n\t1.Change the value of cell\n\t2.Insert at the end of the column\n\t3.Insert a cell at specific position\n\t4.Insert an empty column at the front of Document\n\t");
-    printf("5.Insert an empty column at the end of Document\n\t:");
+    printf("5.Insert an empty column at the end of Document\n\t6.Insert a new row at the the end of SpreadSheet\n\t:");
     float av;
     //char y_n;
     int y_n;
@@ -275,6 +275,9 @@ void insert()
         break;
       case 5:
         init_end(&H,&T);
+        break;
+      case 6:
+        insert_col(H,1,0);
         break;
       default:
         printf("\tWorng input\n");
@@ -350,7 +353,7 @@ void main()
         print();
         break;
       case 6:
-        printf("\nWould you like to save this SpreadSheet as .csv file: ");
+        printf("\nWould you like to save this SpreadSheet as .csv file 1/0: ");
         scanf("%d",&y_n);
         if(y_n)
           save(H);
