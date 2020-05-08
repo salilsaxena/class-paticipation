@@ -1,15 +1,9 @@
-have started inserting float ask other members too, and test them too.
-
-error handling of maximum and minumum:
-  must be done in main.c
-
 check functionality of pos_checker(include it in main) 
 
-add or substract cells.
+** add or substract cells. **
 
-add row realted functions to main(eiter make it or insert them to main)
+make buffer, and add an option on menu to print/insert/clear.
 
-segregate all other functons from main to helper_main.h
+add row realted functions to main(eiter make it or insert them to main) 
 
 tag named `before_float` is made which contains totally safe build, revert back to it OR dont mere if found in any kind of confusion.
-
