@@ -1,4 +1,6 @@
 started adding `int no_col` to head 
   check it in insert_del.h
   replace no_column with it.
+
+segration is done,test it more.
 tag named `before_float` is made which contains totally safe build, revert back to it OR dont mere if found in any kind of confusion.
