@@ -191,7 +191,7 @@ void for_row(ll_carrier* H,ll_carrier* T,float* buffer)
 void data_related(ll_carrier* H,ll_carrier* T,float* buffer)
 {
   int choice,x,y;
-  printf("\n\tChoice:\n\t0.Back\n\t1.Length of each column\n\t2.Total no. of cells\n\t3.Column related data\n\t4.Row related Data\n\t:");
+  printf("\n\tChoice:\n\t0.Back\n\t1.Length of each column\n\t2.Total no. of cells\n\t3.Add or Substract values of cells\n\t4.Column related data\n\t5.Row related Data\n\t:");
   scanf("%d",&choice);
   switch(choice)
   {
@@ -205,9 +205,13 @@ void data_related(ll_carrier* H,ll_carrier* T,float* buffer)
       printf("\n\t\"Total number of Cells: %d\"\n\n",H->length * no_column(H));
       break;
     case 3:
-      for_column(H,T,buffer);
+      sum_sub_cell(H,buffer);
+      printf("The final sum is : %f",*buffer);
       break;
     case 4:
+      for_column(H,T,buffer);
+      break;
+    case 5:
       for_row(H,T,buffer);
       break;
     default:

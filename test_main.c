@@ -5,6 +5,7 @@
 #include "helper.h"
 #include "insert_del.h"
 #include "print.h"
+#include "helper_main.h"
 void main()
 {
   ll_carrier *H,*T;
@@ -40,5 +41,9 @@ void main()
   pos(H,15,1);
   print_block(H);
   del_cell_pos(1,11,H);
+  change_ele(1,1,H,43);
   print_block(H);
+  float x = 0;
+  sum_sub_cell(H,&x);
+  printf("%f\n\n",x);
 }

@@ -241,3 +241,52 @@ float minimum(int input,ll_carrier* H ,int row_flag)//other thn zero?
   }
   return min;
 }
+float ret_val(int x,int y,ll_carrier* H)
+{
+  node* crt = H->head;
+  for(int i = 1;i<x;i++)
+    crt = crt->R;
+  for(int j = 1;j<y;j++)
+    crt = crt->D;
+  return crt->val;
+}
+void sum_sub_cell(ll_carrier* H,float *buffer)
+{
+  char op; 
+  int x,y;
+  float sum=0,temp=0;
+  while(op!='0')
+  {
+    printf("Enter the operation you want: ");
+    scanf(" %c",&op);
+    if(op=='0')
+    {
+      printf("%f\n\n",sum);
+      *buffer = sum;
+      return ;
+    }
+    printf("Enter the postion of cell x: ");
+    scanf("%d",&x);
+    printf("Enter the postion of cell y: ");
+    scanf("%d",&y);
+
+    if(!pos_checker(x,y,H))
+    {
+      op = '0';
+      printf("Out of Range");
+      return ;
+    }
+    temp = ret_val(x,y,H); 
+    switch(op)
+    {
+      case '+': 
+        sum+=temp;
+        break;
+      case '-':
+        sum-=temp;
+        break;
+      default: 
+        printf("\nnot valid\n");  
+    }
+  }
+}
