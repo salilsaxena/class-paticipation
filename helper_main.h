@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<limits.h>
 #include<stdlib.h>
-void search(ll_carrier* H,ll_carrier* T)
+void search(ll_carrier* H,ll_carrier* T,float *buffer)
 {
   float ele;
   int choice;
@@ -15,11 +15,13 @@ void search(ll_carrier* H,ll_carrier* T)
     case 1:
       printf("\tEnter the element you want to search: ");
       scanf("%f",&ele);
+      *buffer = ele;
       pos(H,ele,0);
       break;
     case 2:
       printf("\tEnter the element you want to search: ");
       scanf("%f",&ele);
+      *buffer = ele;
       pos(H,ele,1);
       break;
     default:
@@ -49,7 +51,7 @@ void print(ll_carrier* H,ll_carrier* T)
   }
 }
 //so we have Max/Min/avg for column and row
-void for_column(ll_carrier* H,ll_carrier* T)
+void for_column(ll_carrier* H,ll_carrier* T,float* buffer)
 {
   int y,choice2,y_n;
   float max,min,avg;
@@ -68,6 +70,7 @@ void for_column(ll_carrier* H,ll_carrier* T)
         printf("\tOut of Range\n");
         break;
       }
+      *buffer = min;//buffer!=INT_MAX
       printf("\t\tThe minimum value of Column %d is %.2f\n",y,min);
       break;
     case 2:
@@ -79,6 +82,7 @@ void for_column(ll_carrier* H,ll_carrier* T)
         printf("\tOut of Range\n");
         break;
       }
+      *buffer = max;
       printf("\t\tThe maximum value of Column %d is %.2f\n",y,max);
       break;
     case 3:
@@ -115,7 +119,7 @@ void for_column(ll_carrier* H,ll_carrier* T)
       break;
   }
 }
-void for_row(ll_carrier* H,ll_carrier* T)
+void for_row(ll_carrier* H,ll_carrier* T,float* buffer)
 {
   int x,choice,y_n;
   float max,min,avg;
@@ -134,6 +138,7 @@ void for_row(ll_carrier* H,ll_carrier* T)
         printf("\tOut of Range\n");
         break;
       }
+      *buffer = min;
       printf("\t\tThe minimum value of Row %d is %.2f\n",x,min);
       break;
     case 2:
@@ -145,6 +150,7 @@ void for_row(ll_carrier* H,ll_carrier* T)
         printf("\tOut of Range\n");
         break;
       }
+      *buffer = max;
       printf("\t\tThe maximum value of Row %d is %.2f\n",x,max);
       break;
     case 3:
@@ -182,7 +188,7 @@ void for_row(ll_carrier* H,ll_carrier* T)
       break;
   }
 }
-void data_related(ll_carrier* H,ll_carrier* T)
+void data_related(ll_carrier* H,ll_carrier* T,float* buffer)
 {
   int choice,x,y;
   printf("\n\tChoice:\n\t0.Back\n\t1.Length of each column\n\t2.Total no. of cells\n\t3.Column related data\n\t4.Row related Data\n\t:");
@@ -199,10 +205,10 @@ void data_related(ll_carrier* H,ll_carrier* T)
       printf("\n\t\"Total number of Cells: %d\"\n\n",H->length * no_column(H));
       break;
     case 3:
-      for_column(H,T);
+      for_column(H,T,buffer);
       break;
     case 4:
-      for_row(H,T);
+      for_row(H,T,buffer);
       break;
     default:
       printf("\tWrong input\n");
@@ -278,7 +284,7 @@ void insert(ll_carrier* H,ll_carrier* T)
     }
   }
 }
-void delete(ll_carrier* H,ll_carrier* T)
+void delete(ll_carrier* H,ll_carrier* T,float* buffer)
 {
   int choice,x,y;
   while(choice!=0) //a single cell case will never arrive
@@ -310,5 +316,29 @@ void delete(ll_carrier* H,ll_carrier* T)
       default:
         printf("\tWorng input\n");
     }
+  }
+}
+void buffer_functions(ll_carrier* H,ll_carrier* T,float* buffer)
+{
+  int choice,x,y;
+  printf("\n\tChoice:\n\t0.Back\n\t1.Print the value of buffer\n\t2.Add Buffer to SpredSheet\n\t:");
+  scanf("%d",&choice);
+  switch(choice)
+  {
+    case 0:
+      break;
+    case 1:
+      printf("\tValue of Buffer: %.2f\n",*buffer);
+      break;
+    case 2: 
+      print_block(H);
+      printf("Enter the value of x: ");
+      scanf("%d",&x);
+      printf("Enter the value of y: ");
+      scanf("%d",&y);
+      insert_pos(x,y,H,T,*buffer);
+      break;
+    default: 
+    printf("\tWorng input\n");
   }
 }
