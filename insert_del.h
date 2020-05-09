@@ -177,9 +177,11 @@ void init_front(ll_carrier** list_h,ll_carrier** list_t)
     tmp->next = NULL;
     *list_h = tmp;
     *list_t = tmp;
+    (*list_h)->no_col = 1;
   }
   else
   {
+    int temp = (*list_h)->no_col;
     tmp->next = *list_h;
     (*list_h)->prev = tmp;
     *list_h = tmp;
@@ -189,6 +191,7 @@ void init_front(ll_carrier** list_h,ll_carrier** list_t)
     }
         //insertion of nodes is complete.
     //now comes the connecting part
+    (*list_h)->no_col = temp+1;
 
   }
 }
@@ -205,10 +208,11 @@ void init_end(ll_carrier** list_h,ll_carrier** list_t) //it will add a node's h&
     tmp->prev = NULL;
     *list_h = tmp;
     *list_t = tmp;
+    (*list_h)->no_col = 1;
   }
   else
   {
-
+    (*list_h)->no_col++;
     tmp->prev = *list_t;
     (*list_t)->next = tmp;
     *list_t = tmp;
@@ -222,6 +226,7 @@ void init_end(ll_carrier** list_h,ll_carrier** list_t) //it will add a node's h&
 
 void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the whole column //perform error handling later
 {
+  int t = (*H)->no_col; //check if: when invalid input:-> does it go till the end.
   if(!node_inp)
   {
     //printf("Wrong input\n");
@@ -230,7 +235,7 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
   ll_carrier* temp = node_inp;
   node* trav = node_inp->head;
   node *tmp;
-  if(node_inp == *H && node_inp == *T)
+  if(node_inp == *H && node_inp == *T)//was not our initial motive, but let it stay 
   {
     //only a singe column is present
     //for now must not delete the whole column as the whole list sheet will becoe empty and have to run init_* again
@@ -293,6 +298,7 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
     }
     free(node_inp);
   }
+  (*H)->no_col = t-1;
 }
 float del_cell_pos(int x,int y,ll_carrier* H)
 {

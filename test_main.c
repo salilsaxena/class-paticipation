@@ -10,6 +10,7 @@ void main()
   ll_carrier *H,*T;
   H = T = NULL;
   init_front(&H,&T);
+printf("\"\"%d\n",H->no_col);
   insert_end(H,H,1);
   for(int i = 0;i<9;i++)
   {
@@ -17,7 +18,9 @@ void main()
   }
   //print_block(H);
   init_end(&H,&T);
+printf("\"%d\n",H->no_col);
   init_front(&H,&T);
+printf("\"%d\n",H->no_col);
   change_ele(1,6,H,12);
   change_ele(3,3,H,13);
   change_ele(1,2,H,14);
@@ -26,10 +29,12 @@ void main()
   insert_col(H,2,23);
   print_block(H);
   del_col(&H,&T,H);//doesnt work with ends of ll_carrier
+printf("\"%d\n",H->no_col);
   ////print_node(H->next->next);
   ////print_block(H->next);
   //print_block(H);
   init_front(&H,&T);
+printf("\"%d\n",H->no_col);
   H->tail->val = 66;
   print_block(H);
   insert_pos(2,5,H,T,44);

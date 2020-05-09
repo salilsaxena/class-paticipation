@@ -11,7 +11,7 @@ typedef struct ll_carrier
 {
   node *head;
   node *tail;
-  int length; // for lenngth of each column
+  int length,no_col; // for lenngth of each column
   struct ll_carrier * next;
   struct ll_carrier * prev;
 }ll_carrier;
