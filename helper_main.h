@@ -287,6 +287,7 @@ void insert(ll_carrier* H,ll_carrier* T)
 void delete(ll_carrier* H,ll_carrier* T,float* buffer)
 {
   int choice,x,y;
+  float temp;
   while(choice!=0) //a single cell case will never arrive
   {
     printf("\n\tChoice: \n\t0.Back\n\t1.Delete a column\n\t2.Delete a cell\n\t:");
@@ -311,7 +312,11 @@ void delete(ll_carrier* H,ll_carrier* T,float* buffer)
         scanf("%d",&x);
         printf("\tEnter the y cordinate: ");
         scanf("%d",&y);
-        del_cell_pos(x,y,H);
+        temp = del_cell_pos(x,y,H);
+        if(temp!=INT_MAX)
+        {
+          *buffer = temp;
+        }
         break;
       default:
         printf("\tWorng input\n");
@@ -337,6 +342,7 @@ void buffer_functions(ll_carrier* H,ll_carrier* T,float* buffer)
       printf("Enter the value of y: ");
       scanf("%d",&y);
       insert_pos(x,y,H,T,*buffer);
+      printf("\t\tDONE\n");
       break;
     default: 
     printf("\tWorng input\n");

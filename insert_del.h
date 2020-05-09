@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<limits.h>
 void init_end(ll_carrier**,ll_carrier**);
 void init_front(ll_carrier**,ll_carrier**);
 
@@ -293,12 +294,13 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
     free(node_inp);
   }
 }
-void del_cell_pos(int x,int y,ll_carrier* H)
+float del_cell_pos(int x,int y,ll_carrier* H)
 {
+  float ret = 0;
   if(!pos_checker(x,y,H))
   {
-    printf("Out of Range!\n");
-    return;
+    printf("\nOut of Range!\n");
+    return INT_MAX;//INT_MAX;
   }
   ll_carrier* col = ret_col(H,x);
   node* crt = col->head;
@@ -306,10 +308,13 @@ void del_cell_pos(int x,int y,ll_carrier* H)
   {
     crt = crt->D;
   }
+  ret = crt->val;
   while(crt->D)
   {
     crt->val = crt->D->val;
     crt = crt->D;
   }
+  
   col->tail->val = 0;
+  return ret;
 }

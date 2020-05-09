@@ -39,8 +39,6 @@ void main()
   print_block(H);
   pos(H,15,1);
   print_block(H);
-  printf("%f\n",avg_row(H,4));
-  init_end(&H,&T);
+  del_cell_pos(1,11,H);
   print_block(H);
-  printf("%f\n",minimum(4,H,0));
 }
