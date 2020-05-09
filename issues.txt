@@ -1,9 +1,3 @@
-check functionality of pos_checker(include it in main) 
-
 ** add or substract cells. **
-
-make buffer, and add an option on menu to print/insert/clear.
-
-add row realted functions to main(eiter make it or insert them to main) 
 
 tag named `before_float` is made which contains totally safe build, revert back to it OR dont mere if found in any kind of confusion.
