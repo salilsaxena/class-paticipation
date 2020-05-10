@@ -17,12 +17,14 @@ void search(ll_carrier** H,ll_carrier ** T,double* buffer)
       scanf("%lf",&ele);
       *buffer = ele;
       pos(*H,ele,0);
+      printf("\tValue saved to Bufer\n");
       break;
     case 2:
       printf("\tEnter the element you want to search: ");
       scanf("%lf",&ele);
       *buffer = ele;
-      pos(*H,ele,1);
+      pos(*H,ele,1);      
+      printf("\tValue saved to Bufer\n");
       break;
     default:
       printf("\tWorng input\n");
@@ -76,7 +78,8 @@ void for_column(ll_carrier** H,ll_carrier ** T,double * buffer)
         break;
       }
       *buffer = min;//buffer!=INT_MAX
-      printf("\t\tThe minimum value of Column %d is %.2lf\n",y,min);
+      printf("\t\tThe minimum value of Column %d is %.2lf\n",y,min);      
+      printf("\t\tValue saved to Bufer\n");
       break;
     case 2:
       printf("\t\tEnter the Coulmn number: ");
@@ -89,6 +92,7 @@ void for_column(ll_carrier** H,ll_carrier ** T,double * buffer)
       }
       *buffer = max;
       printf("\t\tThe maximum value of Column %d is %.2lf\n",y,max);
+      printf("\t\tValue saved to Bufer\n");
       break;
     case 3:
       printf("\t\tEnter the Column number for avg: ");
@@ -111,6 +115,7 @@ void for_column(ll_carrier** H,ll_carrier ** T,double * buffer)
         {
           case 0:
             *buffer = avg;
+            printf("\t\tValue saved to Bufer\n");
             break;
           case 1:
             insert_col(*H,y,avg);
@@ -125,6 +130,7 @@ void for_column(ll_carrier** H,ll_carrier ** T,double * buffer)
       else
       {
         *buffer = avg;
+        printf("\t\tValue saved to Bufer\n");
       }
       break;
     default: 
@@ -144,11 +150,6 @@ void for_row(ll_carrier** H,ll_carrier ** T,double* buffer)
     case 1:
       printf("\t\tEnter the Row number: ");
       scanf("%d",&x);
-      //if(x<0 || x>no_column(*H))
-      //{
-      //  printf("\tOut of Range\n");
-      //  break;
-      //}
       min = minimum(x,*H,1);
       if(min==INT_MAX)
       {
@@ -157,6 +158,7 @@ void for_row(ll_carrier** H,ll_carrier ** T,double* buffer)
       }
       *buffer = min;
       printf("\t\tThe minimum value of Row %d is %.2lf\n",x,min);
+      printf("\t\tValue saved to Bufer\n");
       break;
     case 2:
       printf("\t\tEnter the Row number: ");
@@ -169,6 +171,7 @@ void for_row(ll_carrier** H,ll_carrier ** T,double* buffer)
       }
       *buffer = max;
       printf("\t\tThe maximum value of Row %d is %.2lf\n",x,max);
+      printf("\t\tValue saved to Bufer\n");
       break;
     case 3:
       printf("\t\tEnter the Row number for avg: ");
@@ -191,6 +194,7 @@ void for_row(ll_carrier** H,ll_carrier ** T,double* buffer)
         {
           case 0:
             *buffer = avg;
+            printf("\t\tValue saved to Bufer\n");
             break;
           case 1:
             init_end(H,T);
@@ -206,6 +210,7 @@ void for_row(ll_carrier** H,ll_carrier ** T,double* buffer)
       else
       {
         *buffer = avg;
+        printf("\t\tValue saved to Bufer\n");
       }
       break;
     default: 
@@ -377,6 +382,7 @@ void delete(ll_carrier** H,ll_carrier ** T,double* buffer)
         if(temp!=INT_MAX)
         {
           *buffer = temp;
+          printf("\tValue saved to Bufer\n");
         }
         break;
       default:
