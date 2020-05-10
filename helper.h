@@ -36,27 +36,6 @@ int total_cells(ll_carrier* H)
   c = c*no_column(H);
   return c;
 }
-int max_length(ll_carrier* H)
-{
-  int len = 0;
-  if(!H)
-  {
-    return 0;
-  }
-  else
-  {
-    ll_carrier* crt = H;
-    while(crt)
-    {
-      if(len<crt->length)
-      {
-       len = crt->length;
-      }
-      crt = crt->next;
-    }
-    return len;
-  }
-}
 ll_carrier* ret_col(ll_carrier* H,int column_no) //it wil return the ll_carrier from the given int 
 // Helper function 
 {
@@ -87,13 +66,13 @@ int pos_checker(int x,int y,ll_carrier* H)
   else 
     return 1;
 }
-void insert_col(ll_carrier*,int,float);
-void change_ele(int,int,ll_carrier*,float);
+void insert_col(ll_carrier*,int,double);
+void change_ele(int,int,ll_carrier*,double);
 //just adding them for safety
-float avg_col(ll_carrier* H,int col)
+double avg_col(ll_carrier* H,int col)
 {
   ll_carrier* cols = ret_col(H,col);
-  float avg;
+  double avg;
   node* crt =cols->head;
   while(crt)
   {
@@ -103,7 +82,7 @@ float avg_col(ll_carrier* H,int col)
   avg = avg/cols->length;
   return avg;
 }
-float avg_row(ll_carrier* H,int row)
+double avg_row(ll_carrier* H,int row)
 {
   int ref = 0;
   node* crt = H->head;
@@ -112,7 +91,7 @@ float avg_row(ll_carrier* H,int row)
     ref++;
     crt = crt->D;
   }
-  float avg = 0;
+  double avg = 0;
   while(crt)
   {
     avg+=crt->val;
@@ -136,11 +115,11 @@ void save(ll_carrier* H)
     {
       if(tmp->R)
       {
-        fprintf(f,"%f,",tmp->val);
+        fprintf(f,"%lf,",tmp->val);
       }
       else
       { 
-        fprintf(f,"%f",tmp->val);
+        fprintf(f,"%lf",tmp->val);
       }
       tmp = tmp->R;
     }
@@ -148,10 +127,11 @@ void save(ll_carrier* H)
     crt = crt->D;
   }
 }
-float maximum(int input,ll_carrier* H,int row_flag)//if row_flag==1 then max of row is considered
+double maximum(int input,ll_carrier* H,int row_flag)//if row_flag==1 then max of row is considered
 {
   node* crt = H->head;
-  int max = INT_MIN,ref = 0;
+  int ref = 0;
+  double max = INT_MIN;
   if(row_flag)
   {
     if(input > H->length)
@@ -194,10 +174,11 @@ float maximum(int input,ll_carrier* H,int row_flag)//if row_flag==1 then max of 
   }
   return INT_MIN;
 }
-float minimum(int input,ll_carrier* H ,int row_flag)//input: maybe row or column
+double minimum(int input,ll_carrier* H ,int row_flag)//input: maybe row or column
 {
   node* crt = H->head;
-  int min = INT_MAX,ref = 0;
+  int ref = 0;
+  double min = INT_MAX;
   if(row_flag)
   {
     if(input > H->length)
@@ -247,7 +228,7 @@ float minimum(int input,ll_carrier* H ,int row_flag)//input: maybe row or column
   }
   return min;
 }
-float ret_val(int x,int y,ll_carrier* H)
+double ret_val(int x,int y,ll_carrier* H)
 {
   node* crt = H->head;
   for(int i = 1;i<x;i++)
@@ -256,18 +237,18 @@ float ret_val(int x,int y,ll_carrier* H)
     crt = crt->D;
   return crt->val;
 }
-void sum_sub_cell(ll_carrier* H,float *buffer)
+void sum_sub_cell(ll_carrier* H,double *buffer)
 {
   char op; 
   int x,y;
-  float sum=0,temp=0;
+  double sum=0,temp=0;
   while(op!='0')
   {
     printf("\tEnter the operation you want: ");
     scanf(" %c",&op);
     if(op=='0')
     {
-      printf("\n\tThe final answer is: %.2f\n",sum);
+      printf("\n\tThe final answer is: %.2lf\n",sum);
       *buffer = sum;
       return ;
     }

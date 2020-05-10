@@ -4,7 +4,7 @@
 void init_end(ll_carrier**,ll_carrier**);
 void init_front(ll_carrier**,ll_carrier**);
 
-void change_ele(int x,int y,ll_carrier* H,float ele)
+void change_ele(int x,int y,ll_carrier* H,double ele)
 {
   //if(!pos_checker(x,y,H))
   //{
@@ -22,7 +22,7 @@ void change_ele(int x,int y,ll_carrier* H,float ele)
   }
   crt->val = ele;
 }
-void insert_col(ll_carrier* H,int x,float ele)
+void insert_col(ll_carrier* H,int x,double ele)
 {
   if(x > no_column(H))
   {
@@ -60,7 +60,7 @@ void insert_col(ll_carrier* H,int x,float ele)
     crt = crt->next;
   }
 }
-void insert_pos(int x,int y,ll_carrier* H,ll_carrier* T,float ele)
+void insert_pos(int x,int y,ll_carrier* H,ll_carrier* T,double ele)
 {
   int x_dup = x;
   int number_of_column = no_column(H);
@@ -104,7 +104,7 @@ void insert_pos(int x,int y,ll_carrier* H,ll_carrier* T,float ele)
     tmp = tmp->D;
   }
 }
-void insert_end(ll_carrier* H,ll_carrier *node_inp,float ele) // to insert ele at the end of ll_carrier's list(node)
+void insert_end(ll_carrier* H,ll_carrier *node_inp,double ele) // to insert ele at the end of ll_carrier's list(node)
 {
   node_inp->length++;
   node* tmp = (node*)malloc(sizeof(node));
@@ -304,9 +304,9 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
   }
   (*H)->no_col = t-1;
 }
-float del_cell_pos(int x,int y,ll_carrier* H)
+double del_cell_pos(int x,int y,ll_carrier* H)
 {
-  float ret = 0;
+  double ret = 0;
   //if(!pos_checker(x,y,H))
   //{
   //  printf("\nOut of Range!\n");

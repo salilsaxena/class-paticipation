@@ -8,11 +8,11 @@
 #include "print.h"
 #include "helper_main.h"
 ll_carrier *T,*H;
-float buffer = 0;
+double buffer = 0;
 
 void main()
 {
-  float buffer;
+  double buffer;
   H = T = NULL;
   init_end(&H,&T);
   insert_end(H,H,0);

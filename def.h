@@ -3,7 +3,7 @@
 
 typedef struct node
 {
-  float val;
+  double val;
   struct node *U,*D,*L,*R; //up down left right will not be used in the demo
 }node;
 //double LL carring doubly LL(node)

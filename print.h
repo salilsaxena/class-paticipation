@@ -14,7 +14,7 @@ void print_node(ll_carrier* node_inp) // to print a list(node) carried inside ll
   {
     while(crt)
     {
-      printf("%.2f,",crt->val);
+      printf("%.2lf,",crt->val);
       crt = crt->D;
     }
     printf("\n");
@@ -55,7 +55,7 @@ void print_block(ll_carrier* H)
     crt_h = crt_v;
     while(crt_h)
     {
-      printf("%.2f\t",crt_h->val);
+      printf("%.2lf\t",crt_h->val);
       crt_h = crt_h->R;
     }
     printf("\n");

@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-int search_helper(ll_carrier* H,float ele)//tryng to give .2 digit precision only
+int search_helper(ll_carrier* H,double ele)//tryng to give .2 digit precision only
 {
   int f =  0;
   ll_carrier* right_trav = H;
@@ -21,7 +21,7 @@ int search_helper(ll_carrier* H,float ele)//tryng to give .2 digit precision onl
   }
   return 0;//not found  
 }
-void pos(ll_carrier * H,float ele,int flag_all) //we will directly change the values of column and row
+void pos(ll_carrier * H,double ele,int flag_all) //we will directly change the values of column and row
 {
   // if flag_all == 0  the first position will only be printed out;
   int f = search_helper(H,ele);
