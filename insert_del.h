@@ -226,12 +226,13 @@ void init_end(ll_carrier** list_h,ll_carrier** list_t) //it will add a node's h&
 
 void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the whole column //perform error handling later
 {
-  int t = (*H)->no_col; //check if: when invalid input:-> does it go till the end.
+   //check if: when invalid input:-> does it go till the end.
   if(!node_inp)
   {
     //printf("Wrong input\n");
     return ;
   }
+  int t = (*H)->no_col;
   ll_carrier* temp = node_inp;
   node* trav = node_inp->head;
   node *tmp;
@@ -247,6 +248,8 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
     }
     (*H)->head = trav;
     trav->val = 0;//will leave 0 in the last cell
+    (*H)->no_col = 1;
+    return ;
   }
   else if(node_inp ==  *H || node_inp == *T)
   {
@@ -276,6 +279,7 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
       free(temp);
       (*T)->next = NULL;
     }
+    // (*H)->no_col = t-1;
   }
 
   else
@@ -303,11 +307,11 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
 float del_cell_pos(int x,int y,ll_carrier* H)
 {
   float ret = 0;
-  if(!pos_checker(x,y,H))
-  {
-    printf("\nOut of Range!\n");
-    return INT_MAX;//INT_MAX;
-  }
+  //if(!pos_checker(x,y,H))
+  //{
+  //  printf("\nOut of Range!\n");
+  //  return INT_MAX;//INT_MAX;
+  //}
   ll_carrier* col = ret_col(H,x);
   node* crt = col->head;
   for(int i=0;i<y-1;i++)
@@ -320,7 +324,6 @@ float del_cell_pos(int x,int y,ll_carrier* H)
     crt->val = crt->D->val;
     crt = crt->D;
   }
-  
   col->tail->val = 0;
   return ret;
 }

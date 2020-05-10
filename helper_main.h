@@ -44,6 +44,11 @@ void print(ll_carrier** H,ll_carrier ** T)
     case 2:
       printf("\n\tEnter the column you want to print: ");
       scanf("%d",&col);
+      if(col<=0 || col>no_column(*H))
+      {
+        printf("Out of Range\n");
+        break; 
+      }
       print_node(ret_col(*H,col));
       break;
     default:
@@ -105,6 +110,7 @@ void for_column(ll_carrier** H,ll_carrier ** T,float * buffer)
         switch(choice2)
         {
           case 0:
+            *buffer = avg;
             break;
           case 1:
             insert_col(*H,y,avg);
@@ -116,7 +122,13 @@ void for_column(ll_carrier** H,ll_carrier ** T,float * buffer)
             printf("No choice avliable\n");
         }
       }
+      else
+      {
+        *buffer = avg;
+      }
       break;
+    default: 
+      printf("\tInvalid SubMenu\n");
   }
 }
 void for_row(ll_carrier** H,ll_carrier ** T,float* buffer)
@@ -173,6 +185,7 @@ void for_row(ll_carrier** H,ll_carrier ** T,float* buffer)
         switch(choice2)
         {
           case 0:
+            *buffer = avg;
             break;
           case 1:
             init_end(H,T);
@@ -185,7 +198,13 @@ void for_row(ll_carrier** H,ll_carrier ** T,float* buffer)
             printf("No choice avliable\n");
         }
       }
+      else
+      {
+        *buffer = avg;
+      }
       break;
+    default: 
+      printf("\tInvalid SubMenu\n");
   }
 }
 void data_related(ll_carrier** H,ll_carrier ** T,float* buffer)
@@ -233,8 +252,18 @@ void insert(ll_carrier** H,ll_carrier ** T)
       case 1:
         printf("\tEnter the x cordinate: ");
         scanf("%d",&x);
+        if(x<=0 || x>no_column(*H))
+        {
+          printf("Out of Range\n");
+          break;
+        }
         printf("\tEnter the y cordinate: ");
         scanf("%d",&y);
+        if(y<=0 || y>(*H)->length)
+        {
+          printf("Out of Range\n");
+          break;
+        }
         printf("\tEneter the value you want to replace with: ");
         scanf("%d",&ele);
         if(!pos_checker(x,y,*H))
@@ -247,6 +276,11 @@ void insert(ll_carrier** H,ll_carrier ** T)
       case 2:
         printf("\tEnter the column number: ");
         scanf("%d",&x);
+        if(x<=0 || x>no_column(*H))
+        {
+          printf("Out of Range\n");
+          break;
+        }
         printf("\tEnter element you want to insert: ");
         scanf("%d",&ele);
         insert_col(*H,x,ele);
@@ -298,20 +332,27 @@ void delete(ll_carrier** H,ll_carrier ** T,float* buffer)
         printf("\n");
         break;
       case 1:
-        if(!(*H)->next)
-        {
-          printf("\n\t\"Only one Column left, cant let you delete it\"\n\n");
-          break;
-        }
         printf("\tEnter the column number you want to delete: ");
         scanf("%d",&x);
+        if(x<=0 || x>no_column(*H))
+        {
+          printf("Out Of Range\n");
+        }
         del_col(H,T,ret_col(*H,x));
         break;
       case 2:
         printf("\tEnter the x cordinate: ");
         scanf("%d",&x);
+        if(x<=0 || x>no_column(*H))
+        {
+          printf("Out Of Range\n");
+        }
         printf("\tEnter the y cordinate: ");
         scanf("%d",&y);
+        if(y<=0 || y>(*H)->length)
+        {
+          printf("Out Of Range\n");
+        }
         temp = del_cell_pos(x,y,*H);
         if(temp!=INT_MAX)
         {
