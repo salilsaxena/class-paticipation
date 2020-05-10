@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 #include<stdlib.h>
 #include<limits.h>
 char* int2str(int val, int base)
@@ -122,7 +123,11 @@ float avg_row(ll_carrier* H,int row)
 }
 void save(ll_carrier* H)
 {
-  FILE* f = fopen("saved_csv.csv","w");
+  char file_name[30];
+  printf("Enter the name of the file: ");
+  scanf("%s",file_name);
+  strcat(file_name,".csv");
+  FILE* f = fopen(file_name,"w");
   node* tmp,*crt = H->head;
   while(crt)
   {
