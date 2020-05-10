@@ -11,14 +11,15 @@ char* int2str(int val, int base)
 }
 int no_column(ll_carrier* H)
 {
-  int c = 0;
-  ll_carrier* crt = H;
-  while(crt)
-  {
-    c++;
-    crt = crt->next;
-  }
-  return c;
+  return H->no_col;
+  //int c = 0;
+  //ll_carrier* crt = H;
+  //while(crt)
+  //{
+  //  c++;
+  //  crt = crt->next;
+  //}
+  //return c;
 }
 //int single_cell(ll_carrier* H)
 //{
@@ -188,7 +189,7 @@ float maximum(int input,ll_carrier* H,int row_flag)//if row_flag==1 then max of 
   }
   return INT_MIN;
 }
-float minimum(int input,ll_carrier* H ,int row_flag)//other thn zero?
+float minimum(int input,ll_carrier* H ,int row_flag)//input: maybe row or column
 {
   node* crt = H->head;
   int min = INT_MAX,ref = 0;

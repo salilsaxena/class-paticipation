@@ -326,7 +326,7 @@ void delete(ll_carrier** H,ll_carrier ** T,float* buffer)
 void buffer_functions(ll_carrier** H,ll_carrier ** T,float* buffer)
 {
   int choice,x,y;
-  printf("\n\tChoice:\n\t0.Back\n\t1.Print the value of buffer\n\t2.Add Buffer to SpredSheet\n\t:");
+  printf("\n\tChoice:\n\t0.Back\n\t1.Print the value of buffer\n\t2.Change value of cell with the buffer\n\t3.Add Buffer to SpredSheet\n\t:");
   scanf("%d",&choice);
   switch(choice)
   {
@@ -336,10 +336,27 @@ void buffer_functions(ll_carrier** H,ll_carrier ** T,float* buffer)
       printf("\tValue of Buffer: %.2f\n",*buffer);
       break;
     case 2: 
-      print_block(*H);
-      printf("Enter the value of x: ");
+      printf("\tEnter the value of x: ");
       scanf("%d",&x);
-      printf("Enter the value of y: ");
+      if(x>no_column(*H) || x<=0)
+      {
+        printf("Out of Rnage\n");
+        break;
+      }
+      printf("\tEnter the value of y: ");
+      scanf("%d",&y);
+      if(y>(*H)->length || y<=0)
+      {
+        printf("Out of Range\n");
+        break;
+      }
+      change_ele(x,y,*H,*buffer);
+      break;
+    case 3: 
+      print_block(*H);
+      printf("\tEnter the value of x: ");
+      scanf("%d",&x);
+      printf("\tEnter the value of y: ");
       scanf("%d",&y);
       insert_pos(x,y,*H,*T,*buffer);
       printf("\t\tDONE\n");

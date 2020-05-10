@@ -189,7 +189,7 @@ void init_front(ll_carrier** list_h,ll_carrier** list_t)
     {
       insert_end(*list_h,tmp,0); // will also update tmp->length
     }
-        //insertion of nodes is complete.
+    //insertion of nodes is complete.
     //now comes the connecting part
     (*list_h)->no_col = temp+1;
 
