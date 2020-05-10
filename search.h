@@ -48,6 +48,7 @@ void pos(ll_carrier * H,double ele,int flag_all) //we will directly change the v
     while(down_trav)
     {
         r++;
+        //if((int)down_trav->val>=((int)ele)-1 && (int)down_trav->val <= ((int)ele)+1 )
         if(down_trav->val <= ele+0.1 && down_trav->val >= ele-0.1) 
         {
           printf("(%d,%d)",c,r);
