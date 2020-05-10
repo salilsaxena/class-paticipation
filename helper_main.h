@@ -93,7 +93,7 @@ void for_column(ll_carrier** H,ll_carrier ** T,double * buffer)
     case 3:
       printf("\t\tEnter the Column number for avg: ");
       scanf("%d",&y);
-      if(y>no_column(*H))
+      if(y>no_column(*H) || y<=0)
       {
         printf("\tOut of range\n");
         break;
@@ -144,6 +144,11 @@ void for_row(ll_carrier** H,ll_carrier ** T,double* buffer)
     case 1:
       printf("\t\tEnter the Row number: ");
       scanf("%d",&x);
+      //if(x<0 || x>no_column(*H))
+      //{
+      //  printf("\tOut of Range\n");
+      //  break;
+      //}
       min = minimum(x,*H,1);
       if(min==INT_MAX)
       {
@@ -168,7 +173,7 @@ void for_row(ll_carrier** H,ll_carrier ** T,double* buffer)
     case 3:
       printf("\t\tEnter the Row number for avg: ");
       scanf("%d",&x);
-      if(x>no_column(*H))
+      if(x>no_column(*H) || x<=0)
       {
         printf("\tOut of range\n");
         break;
@@ -230,6 +235,7 @@ void data_related(ll_carrier** H,ll_carrier ** T,double* buffer)
       for_row(H,T,buffer);
       break;
     case 5: 
+      print_block(*H);
       sum_sub_cell(*H,buffer);
       break;
     default:
@@ -324,7 +330,7 @@ void insert(ll_carrier** H,ll_carrier ** T)
 }
 void delete(ll_carrier** H,ll_carrier ** T,double* buffer)
 {
-  int choice,x,y;
+  int choice=-1,x,y;
   double temp;
   while(choice!=0) //a single cell case will never arrive
   {

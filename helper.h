@@ -134,7 +134,7 @@ double maximum(int input,ll_carrier* H,int row_flag)//if row_flag==1 then max of
   double max = INT_MIN;
   if(row_flag)
   {
-    if(input > H->length)
+    if(input > H->length || input <= 0)
     {
       return INT_MIN;//out of range
     }
@@ -154,7 +154,7 @@ double maximum(int input,ll_carrier* H,int row_flag)//if row_flag==1 then max of
   }
   else
   {
-    if(input > no_column(H))
+    if(input > no_column(H) || input <= 0)
     {
       return INT_MIN;//out of range
     }
@@ -181,7 +181,7 @@ double minimum(int input,ll_carrier* H ,int row_flag)//input: maybe row or colum
   double min = INT_MAX;
   if(row_flag)
   {
-    if(input > H->length)
+    if(input > H->length|| input <= 0)
     {
       return INT_MAX;//out of range
     }
@@ -201,7 +201,7 @@ double minimum(int input,ll_carrier* H ,int row_flag)//input: maybe row or colum
   }
   else
   {
-    if(input > no_column(H))
+    if(input > no_column(H)|| input <= 0)
     {
       return INT_MAX;//out of range
     }
