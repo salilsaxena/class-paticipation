@@ -1,5 +1,6 @@
 definition of each submenu along with data structres used(basically a whole overview of project) in readme_to_pdf.odt.
 
 have to make a guide-through for the main.c in README.txt
+  deletion is remaing.
 
 tag named `before_float` is made which contains totally safe build, revert back to it OR dont mere if found in any kind of confusion.
