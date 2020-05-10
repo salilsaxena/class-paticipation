@@ -60,50 +60,6 @@ void insert_col(ll_carrier* H,int x,double ele)
     crt = crt->next;
   }
 }
-//void insert_pos(int x,int y,ll_carrier* H,ll_carrier* T,double ele)
-//{
-//  int x_dup = x;
-//  int number_of_column = no_column(H);
-//  //if(x>number_of_column)
-//  //{
-//  //  init_end(&H,&T);
-//  //  number_of_column++;
-//  //  x_dup = number_of_column;
-//  //}
-//  //if(y>H->length)
-//  //{
-//  //  printf("jjj\n");
-//  //  if(x<=number_of_column)
-//  //  {
-//  //    change_ele(x,H->length,H,ele);
-//  //  }
-//  //  else
-//  //  {
-//  //    change_ele(number_of_column,H->length,H,ele);
-//  //  }
-//  //  return ;
-//  //}
-//  insert_col(H,1,0);//will insert a new row at the end if y is not ou of range
-//  int temp,t;
-//  node* tmp = H->head;
-//  ll_carrier* crt = H;
-//  crt = ret_col(H,x_dup);
-//  tmp = crt->head;
-//  for(int j = 0; j<y-1;j++)
-//  {
-//    tmp = tmp->D;
-//  }
-//  temp = tmp->val;
-//  tmp->val = ele;
-//  tmp = tmp->D;
-//  while(tmp)
-//  {
-//    t = tmp->val;
-//    tmp->val = temp;
-//    temp = t;
-//    tmp = tmp->D;
-//  }
-//}
 void insert_pos_col(int x,int y,ll_carrier* H,ll_carrier* T,double ele)
 {
   ll_carrier* crt = H;

@@ -248,11 +248,12 @@ void insert(ll_carrier** H,ll_carrier ** T)
   double ele;
   while(choice!=0)
   {
-    printf("\n\tChoice:\n\t0.back\n\t1.Change the value of cell\n\t2.Insert at the end of the column\n\t3.Insert a cell at specific position\n\t4.Insert an empty column at the front of Document\n\t");
+    printf("\n\tChoice:\n\t0.back\n\t1.Change the value of cell\n\t2.Insert at the end of the column\n\t3.Insert a new cell at specific position\n\t4.Insert an empty column at the front of Document\n\t");
     printf("5.Insert an empty column at the end of Document\n\t6.Insert a new row at the the end of SpreadSheet\n\t:");
     double av;
     //char y_n;
     int y_n;
+    int choice2;
     scanf("%d",&choice);
     switch(choice)
     {
@@ -296,23 +297,32 @@ void insert(ll_carrier** H,ll_carrier ** T)
         insert_col(*H,x,ele);
         break;
       case 3:
-        printf("\tEnter the x cordinate: ");
-        scanf("%d",&x);
-        //if(x>no_column(H))
-        //{
-        //  printf("Out of range\n");
-        //  break;
-        //}
-        printf("\tEnter the y cordinate: ");
-        scanf("%d",&y);
-        //if(y>H->length)
-        //{
-        //  printf("Out of range\n");
-        //  break;
-        //}
-        printf("\tEnter the value you want in that cell: ");
-        scanf("%lf",&ele);
-        insert_pos(x,y,*H,*T,ele);
+        printf("\t\t0.Back\n\t\t1.Shift All cells Row Wise\n\t\t2.Shift All cells Column Wise\n\t\t:");
+        scanf("%d",&choice2);
+        switch(choice2)
+        {
+          case 0:
+            break;
+          case 1: 
+            printf("\tEnter the x cordinate: ");
+            scanf("%d",&x);
+            printf("\tEnter the y cordinate: ");
+            scanf("%d",&y);
+            printf("\tEnter the value you want in that cell: ");
+            scanf("%lf",&ele);
+            insert_pos_row(x,y,*H,*T,ele);
+            break;
+          case 2:
+            printf("\tEnter the x cordinate: ");
+            scanf("%d",&x);
+            printf("\tEnter the y cordinate: ");
+            scanf("%d",&y);
+            printf("\tEnter the value you want in that cell: ");
+            scanf("%lf",&ele);
+            insert_pos_col(x,y,*H,*T,ele);
+            break;
+        }
+        //insert_pos(x,y,*H,*T,ele);
         break;
       case 4:
         init_front(H,T);
@@ -377,7 +387,8 @@ void delete(ll_carrier** H,ll_carrier ** T,double* buffer)
 void buffer_functions(ll_carrier** H,ll_carrier ** T,double* buffer)
 {
   int choice,x,y;
-  printf("\n\tChoice:\n\t0.Back\n\t1.Print the value of buffer\n\t2.Change value of cell with the buffer\n\t3.Add Buffer to SpredSheet\n\t:");
+  int choice2;
+  printf("\n\tChoice:\n\t0.Back\n\t1.Print the value of buffer\n\t2.Change value of cell with the buffer\n\t3.Add Buffer to a new cell of SpredSheet\n\t:");
   scanf("%d",&choice);
   switch(choice)
   {
@@ -404,14 +415,27 @@ void buffer_functions(ll_carrier** H,ll_carrier ** T,double* buffer)
       change_ele(x,y,*H,*buffer);
       break;
     case 3: 
-      print_block(*H);
-      printf("\tEnter the value of x: ");
-      scanf("%d",&x);
-      printf("\tEnter the value of y: ");
-      scanf("%d",&y);
-      insert_pos(x,y,*H,*T,*buffer);
-      printf("\t\tDONE\n");
-      break;
+        printf("\t\t0.Back\n\t\t1.Shift All cells Row Wise\n\t\t2.Shift All cells Column Wise\n\t\t:");
+        scanf("%d",&choice2);
+        switch(choice2)
+        {
+          case 0:
+            break;
+          case 1: 
+            printf("\tEnter the x cordinate: ");
+            scanf("%d",&x);
+            printf("\tEnter the y cordinate: ");
+            scanf("%d",&y);
+            insert_pos_row(x,y,*H,*T,*buffer);
+            break;
+          case 2:
+            printf("\tEnter the x cordinate: ");
+            scanf("%d",&x);
+            printf("\tEnter the y cordinate: ");
+            scanf("%d",&y);
+            insert_pos_col(x,y,*H,*T,*buffer);
+            break;
+        }
     default: 
     printf("\tWorng input\n");
   }
