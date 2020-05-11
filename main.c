@@ -35,11 +35,11 @@ void main()
         insert(&H,&T);
         break;
       case 4:
-        if(total_cells(H)==1)
-        {
-          printf("\n\t\"Only one cell left, cant let you delete it!\"\n\n");
-          break;
-        }
+        //if(total_cells(H)==1)
+        //{
+        //  printf("\n\t\"Only one cell left, cant let you delete it!\"\n\n");
+        //  break;
+        //}
         delete(&H,&T,&buffer);
         break;
       case 5:

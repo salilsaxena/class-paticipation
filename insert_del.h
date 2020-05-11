@@ -333,7 +333,62 @@ void del_col(ll_carrier** H,ll_carrier** T,ll_carrier* node_inp) //to delete the
   }
   (*H)->no_col = t-1;
 }
-double del_cell_pos(int x,int y,ll_carrier* H)
+void del_row(ll_carrier** H,ll_carrier** T,int y)
+{
+	node* crt = (*H)->head;
+	node* free_temp;
+	ll_carrier* temp = *H;
+	// for(int i = 0i<y-1;i++)
+	// {	
+	// 	crt = crt->D;
+	// }//readched the row
+	if((*H)->head == (*H)->tail) // if only one row is there
+	{
+		while(crt)
+		{
+			crt->val = 0;
+			crt = crt->R;
+		}
+	}
+	else if(y==1) //first row
+	{
+		while(crt)
+		{
+			free_temp = crt;
+			crt->D->U = NULL;
+			temp->head = crt->D;
+			crt = crt->R;
+			temp = temp->next;
+			free(free_temp);
+		}
+	}
+	else if(y==(*H)->length)//last row
+	{
+		while(crt)
+		{
+			free_temp = crt;
+			crt->U->D = NULL;
+			temp->tail = crt->U;
+			crt = crt->R;
+			temp = temp->next;
+			free(free_temp);
+		}
+	}	
+
+	else // adny other row
+	{
+		while(crt)
+		{
+			free_temp = crt;
+			crt->U->D = crt->D;
+			crt->D->U = crt->U;
+			crt = crt->R;
+			free(free_temp);
+		}
+	}
+
+}
+double del_cell_pos_col(int x,int y,ll_carrier* H)
 {
   double ret = 0;
   //if(!pos_checker(x,y,H))

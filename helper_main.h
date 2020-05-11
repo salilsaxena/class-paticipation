@@ -345,7 +345,7 @@ void insert(ll_carrier** H,ll_carrier ** T)
 }
 void delete(ll_carrier** H,ll_carrier ** T,double* buffer)
 {
-  int choice=-1,x,y;
+  int choice=-1,x,y,choice2;
   double temp;
   while(choice!=0) //a single cell case will never arrive
   {
@@ -378,7 +378,21 @@ void delete(ll_carrier** H,ll_carrier ** T,double* buffer)
         {
           printf("Out Of Range\n");
         }
-        temp = del_cell_pos(x,y,*H);
+        printf("\t\tMenu:\n\t\t0.Back\n\t\t1.Shift all the cells Row Wise\n\t\t2.Shift all the cells Column Wise\n\t\t:");
+        scanf("%d",&choice2);
+        switch(choice2)
+        {
+          case 0: 
+            break;
+          case 1: 
+            temp = del_cell_pos_row(x,y,*H);
+            break;
+          case 2: 
+            temp = del_cell_pos_col(x,y,*H);
+            break;
+          default: 
+            printf("\t\tWrong Choice\n");
+        }
         if(temp!=INT_MAX)
         {
           *buffer = temp;
