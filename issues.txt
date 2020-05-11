@@ -1,8 +1,12 @@
-started adding `int no_col` to head 
-  check it in insert_del.h
+1. added del_row, test it
 
-check issues at `buffer` branch 
+2. del_cell_pos
 
-`add-sub-cell` branch is useless.
+3. removed: no deleteion on one cell
+
+/*
+	2 and 3 added to main, test the 
+	test 1 in test_main.c with all the cases
+*/
 
 tag named `before_float` is made which contains totally safe build, revert back to it OR dont mere if found in any kind of confusion.
