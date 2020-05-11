@@ -353,6 +353,25 @@ double del_cell_pos(int x,int y,ll_carrier* H)
     crt->val = crt->D->val;
     crt = crt->D;
   }
-  col->tail->val = 0;
+  //col->tail->val = 0;
+  crt->val = 0;
+  return ret;
+}
+double del_cell_pos_row(int x,int y,ll_carrier* H)
+{
+  double ret = 0;
+  ll_carrier* col= ret_col(H,x);
+  node* crt = col->head;
+  for(int i = 0;i<y-1;i++)
+  { 
+    crt = crt->D;
+  }
+  ret = crt->val;
+  while(crt->R)
+  {
+    crt->val = crt->R->val;
+    crt = crt->R;
+  }
+  crt->val = 0;
   return ret;
 }
