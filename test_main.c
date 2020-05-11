@@ -40,8 +40,13 @@ printf("\"\"%d\n",H->no_col);
   //print_block(H);
   pos(H,15,1);
   print_block(H);
-  del_cell_pos(1,11,H);
+  del_cell_pos_col(1,11,H);
   change_ele(1,6,H,12.357);
+  change_ele(1,1,H,-2);
+  change_ele(1,2,H,-4);
   print_block(H);
   pos(H,12.36,1);
+  del_row(&H,&T,H->length);
+  print_block(H);
+  printf("%lf\n",H->head->val);
 }

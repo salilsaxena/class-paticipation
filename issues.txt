@@ -5,8 +5,8 @@
 3. removed: no deleteion on one cell
 
 /*
-	2 and 3 added to main, test the 
-	test 1 in test_main.c with all the cases
+	2 and 3 added to main, test them 
+  testing complete, but check if all the cases of row deletion are there or not. 
 */
 
 tag named `before_float` is made which contains totally safe build, revert back to it OR dont mere if found in any kind of confusion.

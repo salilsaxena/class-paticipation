@@ -338,10 +338,10 @@ void del_row(ll_carrier** H,ll_carrier** T,int y)
 	node* crt = (*H)->head;
 	node* free_temp;
 	ll_carrier* temp = *H;
-	// for(int i = 0i<y-1;i++)
-	// {	
-	// 	crt = crt->D;
-	// }//readched the row
+	for(int i = 0;i<y-1;i++)
+	{	
+		crt = crt->D;
+	}//readched the row
 	if((*H)->head == (*H)->tail) // if only one row is there
 	{
 		while(crt)
@@ -377,6 +377,7 @@ void del_row(ll_carrier** H,ll_carrier** T,int y)
 
 	else // adny other row
 	{
+    
 		while(crt)
 		{
 			free_temp = crt;
