@@ -244,7 +244,7 @@ void sum_sub_cell(ll_carrier* H,double *buffer)
   double sum=0,temp=0;
   while(op!='0')
   {
-    printf("\tEnter the operation you want: ");
+    printf("\tEnter the operation you want, \'0\' to stop it: ");
     scanf(" %c",&op);
     if(op=='0')
     {
