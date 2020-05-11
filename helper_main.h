@@ -466,6 +466,7 @@ void buffer_functions(ll_carrier** H,ll_carrier ** T,double* buffer)
             insert_pos_col(x,y,*H,*T,*buffer);
             break;
         }
+        break;
     default: 
     printf("\tWorng input\n");
   }
