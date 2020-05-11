@@ -46,6 +46,11 @@ printf("\"\"%d\n",H->no_col);
   change_ele(1,2,H,-4);
   print_block(H);
   pos(H,12.36,1);
+
+  del_row(&H,&T,1);
+print_block(H); 
+  del_row(&H,&T,5);
+print_block(H);
   del_row(&H,&T,H->length);
   print_block(H);
   printf("%lf\n",H->head->val);

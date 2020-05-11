@@ -349,7 +349,7 @@ void delete(ll_carrier** H,ll_carrier ** T,double* buffer)
   double temp;
   while(choice!=0) //a single cell case will never arrive
   {
-    printf("\n\tChoice: \n\t0.Back\n\t1.Delete a column\n\t2.Delete a cell\n\t:");
+    printf("\n\tChoice: \n\t0.Back\n\t1.Delete a column\n\t2.Delete a row\n\t3.Delete a cell\n\t:");
     scanf("%d",&choice);
     switch(choice)
     {
@@ -365,7 +365,17 @@ void delete(ll_carrier** H,ll_carrier ** T,double* buffer)
         }
         del_col(H,T,ret_col(*H,x));
         break;
-      case 2:
+      case 2: 
+        printf("\tEnter the row number: ");
+        scanf("%d",&y);
+        if(y>(*H)->length || y<=0)
+        {
+          printf("Out of Range\n");
+          break;
+        }
+        del_row(H,T,y);
+        break;
+      case 3:
         printf("\tEnter the x cordinate: ");
         scanf("%d",&x);
         if(x<=0 || x>no_column(*H))
