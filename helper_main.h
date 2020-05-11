@@ -60,7 +60,7 @@ void print(ll_carrier** H,ll_carrier ** T)
 //so we have Max/Min/avg for column and row
 void for_column(ll_carrier** H,ll_carrier ** T,double * buffer)
 {
-  int y,choice2,y_n;
+  int x,choice2,y_n;
   double max,min,avg;
   printf("\t\t0.Back\n\t\t1.Minumum\n\t\t2.Maximum\n\t\t3.Avg\n\t\t:");
   scanf("%d",&choice2);
@@ -70,40 +70,40 @@ void for_column(ll_carrier** H,ll_carrier ** T,double * buffer)
       break;
     case 1:
       printf("\t\tEnter the Coulmn number: ");
-      scanf("%d",&y);
-      min = minimum(y,*H,0);
+      scanf("%d",&x);
+      min = minimum(x,*H,0);
       if(min==INT_MAX)
       {
         printf("\tOut of Range\n");
         break;
       }
       *buffer = min;//buffer!=INT_MAX
-      printf("\t\tThe minimum value of Column %d is %.2lf\n",y,min);      
+      printf("\t\tThe minimum value of Column %d is %.2lf\n",x,min);      
       printf("\t\tValue saved to Bufer\n");
       break;
     case 2:
       printf("\t\tEnter the Coulmn number: ");
-      scanf("%d",&y);
-      max = maximum(y,*H,0);
+      scanf("%d",&x);
+      max = maximum(x,*H,0);
       if(max==INT_MIN)
       {
         printf("\tOut of Range\n");
         break;
       }
       *buffer = max;
-      printf("\t\tThe maximum value of Column %d is %.2lf\n",y,max);
+      printf("\t\tThe maximum value of Column %d is %.2lf\n",x,max);
       printf("\t\tValue saved to Bufer\n");
       break;
     case 3:
       printf("\t\tEnter the Column number for avg: ");
-      scanf("%d",&y);
-      if(y>no_column(*H) || y<=0)
+      scanf("%d",&x);
+      if(x>no_column(*H) || x<=0)
       {
         printf("\tOut of range\n");
         break;
       }
-      avg = avg_col(*H,y);
-      printf("\t\tAvg of %d Column is: %.2lf\n",y,avg);
+      avg = avg_col(*H,x);
+      printf("\t\tAvg of %d Column is: %.2lf\n",x,avg);
       printf("\t\tWould you like to add it in the spreadsheet 1\\0: ");
       scanf("%d",&y_n); //y_n is not getting accepted.
       int choice2;
@@ -118,10 +118,10 @@ void for_column(ll_carrier** H,ll_carrier ** T,double * buffer)
             printf("\t\tValue saved to Bufer\n");
             break;
           case 1:
-            insert_col(*H,y,avg);
+            insert_col(*H,x,avg);
             break;
           case 2:
-            change_ele(y,(*H)->length,*H,avg);
+            change_ele(x,(*H)->length,*H,avg);
             break;
           default:
             printf("No choice avliable\n");
@@ -139,7 +139,7 @@ void for_column(ll_carrier** H,ll_carrier ** T,double * buffer)
 }
 void for_row(ll_carrier** H,ll_carrier ** T,double* buffer)
 {
-  int x,choice,y_n;
+  int y,choice,y_n;
   double max,min,avg;
   printf("\t\t0.Back\n\t\t1.Minumum\n\t\t2.Maximum\n\t\t3.Avg\n\t\t:");
   scanf("%d",&choice);
@@ -149,40 +149,40 @@ void for_row(ll_carrier** H,ll_carrier ** T,double* buffer)
       break;
     case 1:
       printf("\t\tEnter the Row number: ");
-      scanf("%d",&x);
-      min = minimum(x,*H,1);
+      scanf("%d",&y);
+      min = minimum(y,*H,1);
       if(min==INT_MAX)
       {
         printf("\tOut of Range\n");
         break;
       }
       *buffer = min;
-      printf("\t\tThe minimum value of Row %d is %.2lf\n",x,min);
+      printf("\t\tThe minimum value of Row %d is %.2lf\n",y,min);
       printf("\t\tValue saved to Bufer\n");
       break;
     case 2:
       printf("\t\tEnter the Row number: ");
-      scanf("%d",&x);
-      max = maximum(x,*H,1);
+      scanf("%d",&y);
+      max = maximum(y,*H,1);
       if(max==INT_MIN)
       {
         printf("\tOut of Range\n");
         break;
       }
       *buffer = max;
-      printf("\t\tThe maximum value of Row %d is %.2lf\n",x,max);
+      printf("\t\tThe maximum value of Row %d is %.2lf\n",y,max);
       printf("\t\tValue saved to Bufer\n");
       break;
     case 3:
       printf("\t\tEnter the Row number for avg: ");
-      scanf("%d",&x);
-      if(x>no_column(*H) || x<=0)
+      scanf("%d",&y);
+      if(y>(*H)->length || y<=0)
       {
         printf("\tOut of range\n");
         break;
       }
-      avg = avg_row(*H,x);
-      printf("\t\tAvg of %d Row is: %.2lf\n",x,avg);
+      avg = avg_row(*H,y);
+      printf("\t\tAvg of %d Row is: %.2lf\n",y,avg);
       printf("\t\tWould you like to add it in the spreadsheet 1\\0: ");
       scanf("%d",&y_n); //y_n is not getting accepted.
       int choice2;
@@ -198,10 +198,10 @@ void for_row(ll_carrier** H,ll_carrier ** T,double* buffer)
             break;
           case 1:
             init_end(H,T);
-            change_ele(no_column(*H),x,*H,avg);
+            change_ele(no_column(*H),y,*H,avg);
             break;
           case 2:
-            change_ele(no_column(*H),x,*H,avg);
+            change_ele(no_column(*H),y,*H,avg);
             break;
           default:
             printf("No choice avliable\n");

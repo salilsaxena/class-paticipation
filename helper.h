@@ -172,7 +172,7 @@ double maximum(int input,ll_carrier* H,int row_flag)//if row_flag==1 then max of
       crt = crt->D;
     }
   }
-  return INT_MIN;
+  return max;
 }
 double minimum(int input,ll_carrier* H ,int row_flag)//input: maybe row or column
 {
@@ -181,7 +181,7 @@ double minimum(int input,ll_carrier* H ,int row_flag)//input: maybe row or colum
   double min = INT_MAX;
   if(row_flag)
   {
-    if(input > H->length|| input <= 0)
+    if(input > H->length || input <= 0)
     {
       return INT_MAX;//out of range
     }
