@@ -55,7 +55,11 @@ Below  is walk through for your ease:
     	5. Insert an empty Column at the end of document(which will have all the 0's in the cells)
     	6. Insert an Empty row at the end of document
     Deletion: 
-    
+    Both option 1&2 should get inputs under range.
+      1. Delete a Column 
+      2. Delete a Row 
+      3. Delete a cell:
+      	Will delete the cell and will ask to shift remainig cell along Row or Column
     Print related function:
       Print all: 
         Will print the whole document with indexes on the side and top of document,
