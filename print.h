@@ -1,30 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-void print_node(ll_carrier* node_inp) // to print a list(node) carried inside ll_carrier.
-{
-  for(int i = 0 ;i<50;i++)
-  {
-    printf("-");
-  }
-  printf("\n");
-  node* crt = node_inp->head;
-  if(!crt)
-    printf("Empty\n");
-  else
-  {
-    while(crt)
-    {
-      printf("%.2lf,",crt->val);
-      crt = crt->D;
-    }
-    printf("\n");
-  }
-  for(int i = 0 ;i<50;i++)
-  {
-    printf("-");
-  }
-  printf("\n");
-}
 void print_block(ll_carrier* H)
 {
   for(int i = 0 ;i<50;i++)
