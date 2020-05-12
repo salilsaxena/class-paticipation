@@ -21,7 +21,7 @@ void main()
   while(1)
   {
     printf("This main menu contains submenus\n");
-    printf("Choice of submenus:\n1.Internal data related functions\n2.Search functions\n3.Insertion related function\n4.Deletion\n5.Print Related functions\n6.Buffer Related functions\n7.Exit\n: ");
+    printf("Choice of submenus:\n1.Internal data related functions\n2.Search functions\n3.Insertion related function\n4.Deletion\n5.Print The document\n6.Buffer Related functions\n7.Exit\n: ");
     scanf("%d",&choice_main);
     switch(choice_main)
     {
@@ -35,15 +35,11 @@ void main()
         insert(&H,&T);
         break;
       case 4:
-        //if(total_cells(H)==1)
-        //{
-        //  printf("\n\t\"Only one cell left, cant let you delete it!\"\n\n");
-        //  break;
-        //}
         delete(&H,&T,&buffer);
         break;
       case 5:
-        print(&H,&T);
+        print_block(H);
+        //print(&H,&T);
         break;
       case 6:
         buffer_functions(&H,&T,&buffer);

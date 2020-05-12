@@ -30,33 +30,33 @@ void search(ll_carrier** H,ll_carrier ** T,double* buffer)
       printf("\tWorng input\n");
   }
 }
-void print(ll_carrier** H,ll_carrier ** T)
-{
-  int choice=-1,col;
-  printf("\n\tChoice:\n\t0.Back\n\t1.Print the whole document\n\t2.Print a whole column\n\t:");
-  scanf("%d",&choice);
-  switch(choice)
-  {
-    case 0:
-      printf("\n");
-      break;
-    case 1:
-      print_block(*H);
-      break;
-    case 2:
-      printf("\n\tEnter the column you want to print: ");
-      scanf("%d",&col);
-      if(col<=0 || col>no_column(*H))
-      {
-        printf("Out of Range\n");
-        break; 
-      }
-      print_node(ret_col(*H,col));
-      break;
-    default:
-      printf("\nWrong input\n");
-  }
-}
+//void print(ll_carrier** H,ll_carrier ** T)
+//{
+//  int choice=-1,col;
+//  printf("\n\tChoice:\n\t0.Back\n\t1.Print the whole document\n\t2.Print a whole column\n\t:");
+//  scanf("%d",&choice);
+//  switch(choice)
+//  {
+//    case 0:
+//      printf("\n");
+//      break;
+//    case 1:
+//      print_block(*H);
+//      break;
+//    case 2:
+//      printf("\n\tEnter the column you want to print: ");
+//      scanf("%d",&col);
+//      if(col<=0 || col>no_column(*H))
+//      {
+//        printf("Out of Range\n");
+//        break; 
+//      }
+//      print_node(ret_col(*H,col));
+//      break;
+//    default:
+//      printf("\nWrong input\n");
+//  }
+//}
 //so we have Max/Min/avg for column and row
 void for_column(ll_carrier** H,ll_carrier ** T,double * buffer)
 {
