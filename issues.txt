@@ -1,12 +1,10 @@
-1. added del_row, test it
 
-2. del_cell_pos
 
-3. removed: no deleteion on one cell
 
-/*
-	2 and 3 added to main, test them 
-  testing complete, but check if all the cases of row deletion are there or not. 
-*/
+
+                                          NO MORE ISSUES
+
+
+
 
 tag named `before_float` is made which contains totally safe build, revert back to it OR dont mere if found in any kind of confusion.
